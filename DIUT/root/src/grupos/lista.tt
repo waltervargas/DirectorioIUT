@@ -1,0 +1,20 @@
+<div id="titulo">
+    <span class ="contitulo">Lista de Grupos</span>
+</div>
+<div id="formulario">
+    <table>
+        [% FOREACH grupo IN grupos %]
+            <tr>
+                <td>
+                    [% grupo %]
+                    [% FOREACH desc IN descripcion %]
+                <td>[% desc %]</td>
+                [% END %] 
+                [% FOREACH opc IN opciones %]
+                    <td><a href="">[% opc %]</a></td>
+                [% END %]              
+                </td>
+            </tr>
+        [% END %]
+    </table>
+</div>

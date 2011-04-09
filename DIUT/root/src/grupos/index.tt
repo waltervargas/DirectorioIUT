@@ -1,0 +1,12 @@
+<div id="tit">
+    <span class ="contitulo">Menu</span></br>
+    <span class ="nompersona">Grupo</span>
+</div>
+<div id="menu">
+    <button id="Datos">Crear</button>
+    <button id="Grupos">Listar</button>
+</div>
+<div id="formulario">
+    <div id="formulario_inside">            
+    </div>
+</div>

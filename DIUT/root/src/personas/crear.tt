@@ -1,0 +1,17 @@
+<div id="titulo">
+           <span class ="contitulo">Crear Persona</span>
+</d>
+<div id="formulario">
+    <form>
+        <p>Nombres:<input name="nombres" type="text" /></p>
+        <p>Apellidos:<input name="apellidos" type="text" /></p>
+        <p>Cedula:<input name="cedula" type="text" /></p>
+        <p>Telefonos:<input name="telefonos" type="text" /></p>
+        <p>Correo:<input name="correo" type="text" /></p>
+    <div id="botones">
+        <button id="Crear">Crear</button>
+        <button id="Limpiar">Limpiar</button>
+    </div>
+    </form>
+</div
+</fo</div>
