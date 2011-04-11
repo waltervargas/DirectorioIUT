@@ -1,13 +1,11 @@
-<div id="titulo">
-    <span class ="contitulo">Crear Grupo</span>
-</div>
-<div id="formulario">
+<div id="contenido">
     <form>
         <p>Nombres:<input name="nombres" type="text" /></p></form>
         <p>Descripción:<textarea name="descripcion" rows="14" cols="26"></textarea>
-    <div id="botones">
-        <button id="Crear">Crear</button>
-        <button id="Limpiar">Limpiar</button>
-    </div>
+    </form>
+    <div id="opc">
+        <a href="Crear">Crear</a>
+        <a href="Limpiar">Limpiar</a>
+    </div>   
 </div>
-</form>
+

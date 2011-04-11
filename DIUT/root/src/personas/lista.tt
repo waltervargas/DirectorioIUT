@@ -1,7 +1,4 @@
-<div id="titulo">
-    <span class ="contitulo">Lista de Grupos</span>
-</div>
-<div id="formulario">
+<div id="conin">
     <table>
         [% FOREACH persona IN personas %]
             <tr>

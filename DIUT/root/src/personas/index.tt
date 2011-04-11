@@ -1,13 +1,9 @@
-<div id="tit">
-    <span class ="contitulo">Menu</span></br>
-    <span class ="nompersona">Persona</span>
-</div>
-<div id="menu">
-    <button id="Crear">Crear</button>
-    <button id="Listar">Listar</button>
-    <button id="Foto">Foto</button>
-</div>
-<div id="formulario">
-    <div id="formulario_inside">            
+<div id="contenido">
+    <div id="titulo">Personas</div>
+    <div id="menu2">
+        <div><a href="personas/crear">Crear</a></div>
+        <div><a href="personas/lista">Listar</a></div>
+        <div><a href="/personas/crear">Otro</a></div>
     </div>
+    [% content %]
 </div>

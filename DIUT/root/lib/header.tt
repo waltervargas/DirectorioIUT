@@ -8,8 +8,14 @@
     <script src="/static/js/application.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
+    <div id="cintillo_institucional">
+            <div id="gbv"> &nbsp; </div>
+            <div id="bicentenario"> &nbsp; </div>
+    </div>
+    <div id="informacion">Registro LDAP</div>    
     <div id="menu"> 
-        <a href="/personas/lista"> Personas </a>
+        <a href="/personas"> Personas</a>
+	    <a href="/grupos"> Grupos</a>
     </div>
     <div id="all">
         [% content %]

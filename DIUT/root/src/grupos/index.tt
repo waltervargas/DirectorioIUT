@@ -1,12 +1,9 @@
-<div id="tit">
-    <span class ="contitulo">Menu</span></br>
-    <span class ="nompersona">Grupo</span>
-</div>
-<div id="menu">
-    <button id="Datos">Crear</button>
-    <button id="Grupos">Listar</button>
-</div>
-<div id="formulario">
-    <div id="formulario_inside">            
+<div id="contenido">
+    <div id="titulo">Grupos</div>
+    <div id="menu2">
+        <div><a href="/grupos/crear">Crear</a></div>
+        <div><a href="/grupos/lista">Listar</a></div>
+        <div><a href="/grupos/crear">Otro</a></div>
     </div>
+    [% content %] 
 </div>

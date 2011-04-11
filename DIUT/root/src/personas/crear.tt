@@ -1,17 +1,13 @@
-<div id="titulo">
-           <span class ="contitulo">Crear Persona</span>
-</d>
-<div id="formulario">
+<div id="conin">
     <form>
         <p>Nombres:<input name="nombres" type="text" /></p>
         <p>Apellidos:<input name="apellidos" type="text" /></p>
         <p>Cedula:<input name="cedula" type="text" /></p>
         <p>Telefonos:<input name="telefonos" type="text" /></p>
         <p>Correo:<input name="correo" type="text" /></p>
-    <div id="botones">
-        <button id="Crear">Crear</button>
-        <button id="Limpiar">Limpiar</button>
+   </form>
+   <div id="opc">
+        <a href="Crear">Crear</a>
+        <a href="Limpiar">Limpiar</a>
     </div>
-    </form>
-</div
-</fo</div>
+</div>

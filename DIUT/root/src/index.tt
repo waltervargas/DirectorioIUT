@@ -1,12 +1,7 @@
-<div id="tit">
-    <span class ="contitulo">Bienvenido</span></br>
-    <span class ="nompersona">Usuario</span>
+<div id="contenido">
+<div id="titulo">
+Titulo
 </div>
-<div id="menu">
-    <span id="Personas"><a href="personas">Personas</a></button>
-    <span id="Grupos"><a href="grupos">Grupos</a></a></div>
-</div>
-<div id="formulario">
-    <div id="formulario_inside">            
-    </div>
+<img align="center" src="static/images/iut.png" width="300" height="300"/>
+Algo Aqui!
 </div>
