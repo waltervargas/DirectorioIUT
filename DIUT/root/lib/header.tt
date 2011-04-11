@@ -14,6 +14,7 @@
     </div>
     <div id="informacion">Registro LDAP</div>    
     <div id="menu"> 
+        <a href="/">Inicio</a>
         <a href="/personas"> Personas</a>
 	    <a href="/grupos"> Grupos</a>
     </div>
