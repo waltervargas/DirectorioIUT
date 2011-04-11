@@ -1,9 +1,9 @@
+<div id="titulo">Personas</div>
 <div id="contenido">
-    <div id="titulo">Personas</div>
     <div id="menu2">
         <div><a href="personas/crear">Crear</a></div>
         <div><a href="personas/lista">Listar</a></div>
-        <div><a href="/personas/crear">Otro</a></div>
+        <div><a href="/personas/agregar">Agregar</a></div>
     </div>
     [% content %]
 </div>

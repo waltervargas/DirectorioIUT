@@ -1,3 +1,4 @@
+<div id ="titulo">Crear Persona</div>
 <div id="conin">
     <form>
         <p>Nombres:<input name="nombres" type="text" /></p>

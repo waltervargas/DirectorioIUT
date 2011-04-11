@@ -1,3 +1,4 @@
+<div id ="titulo">Lista de Personas</div>
 <div id="conin">
     <table>
         [% FOREACH persona IN personas %]

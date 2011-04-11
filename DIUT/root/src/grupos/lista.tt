@@ -1,3 +1,4 @@
+<div id="titulo">Lista de Grupos</div>
 <div id="contenido">
     <table>
         [% FOREACH grupo IN grupos %]

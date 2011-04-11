@@ -38,6 +38,9 @@ sub crear : Local {
     my ( $self, $c ) = @_;
 }
 
+sub agregar : Local {
+    my ( $self, $c ) = @_;
+}
 
 =head1 AUTHOR
 
