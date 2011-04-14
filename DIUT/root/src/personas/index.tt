@@ -1,9 +1,4 @@
-<div id="titulo">Personas</div>
+[% INCLUDE "personas/menu.tt" %]
 <div id="contenido">
-    <div id="menu2">
-        <div><a href="personas/crear">Crear</a></div>
-        <div><a href="personas/lista">Listar</a></div>
-        <div><a href="/personas/agregar">Agregar</a></div>
-    </div>
-    [% content %]
+
 </div>

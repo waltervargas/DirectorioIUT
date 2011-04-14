@@ -1,5 +1,6 @@
+[% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Crear Persona</div>
-<div id="conin">
+<div id="contenido">
     <form>
         <p>Nombres:<input name="nombres" type="text" /></p>
         <p>Apellidos:<input name="apellidos" type="text" /></p>
@@ -10,5 +11,5 @@
    <div id="opc">
         <a href="Crear">Crear</a>
         <a href="Limpiar">Limpiar</a>
-    </div>
+   </div>
 </div>

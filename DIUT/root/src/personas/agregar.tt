@@ -1,3 +1,4 @@
+[% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Agregar a Grupo</div>
 <div id="conin">
     <form>

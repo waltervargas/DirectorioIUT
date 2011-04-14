@@ -19,18 +19,8 @@ div {
 
 a {
     text-decoration: none;
-    padding: 1px;
 }
 
-a:link {
-    color: #000000;
-}
-a:hover {
-    color: #FFFFFF;
-}
-a:active {
-    color: #FF0000;
-}
 
 .clear {
  clear: both; 
@@ -66,13 +56,19 @@ div#informacion {
 }
 
 div#menu {
-    background-color: #FF0000;
-    height:        20px;
+    background-color: #eee;
 }
 
 div#menu a {
-    border: 1px outset #FFFFFF;    
+    text-decoration: none;
+    padding: 1px;
+    border: 0px outset #FFFFFF;    
 }
+
+div.menu a:link {color: #000000}   
+div.menu a:hover {color: #444;}   
+div.menu a:active {color: #FF0000; }
+div.menu a:visited { color: #000;}
 
 div#titulo {
     border: 1px solid;
@@ -83,23 +79,22 @@ div#titulo {
 div#menu2{
     border: 1px solid;
     background-color: #D8D8D8;
-    margin-top: 50px;
-    width:  80px;
-    height: 100px;
 }
 
-div#conin {
-    border: 1px solid;
-    margin-left: 100px;
-    margin-top: -112px;
-    height: 550px;
+div.menu a:link {color: #000000}   
+div.menu a:hover {color: #444;}   
+div.menu a:active {color: #FF0000; }
+div.menu a:visited { color: #000;}
+
+div#contenido {
+    margin: 0 auto;
 }
 
-div#conin form{
-    float: right;
+p, form{
+    text-align: left;
 }
 
-div#conin table,  tr{
+table, tr{
     border-collapse: collapse;
     border:1px solid black;
     text-align: left;
@@ -107,5 +102,9 @@ div#conin table,  tr{
 
 div#opc {
     padding: 30px;
-    float: right;  
+    float: left;  
+}
+
+div#menu span {
+    padding: 5px;   
 }

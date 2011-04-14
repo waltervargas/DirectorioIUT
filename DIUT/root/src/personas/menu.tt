@@ -1,0 +1,5 @@
+<div class="menu" id="menu2">
+    <span><a href="/personas/crear">Crear</a></span>
+    <span><a href="/personas/lista">Listar</a></span>
+    <span><a href="/personas/agregar">Agregar</a></span>
+</div>

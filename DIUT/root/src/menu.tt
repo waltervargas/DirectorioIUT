@@ -1,0 +1,11 @@
+<div class="menu" id="menu"> 
+    <span>
+        <a href="/">Inicio</a>
+    </span>
+    <span>
+        <a href="/personas">Personas</a>
+    </span>
+    <span>
+        <a href="/grupos"> Grupos</a>
+    </span>
+</div>

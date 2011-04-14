@@ -1,0 +1,5 @@
+<div class="menu" id="menu2">
+        <span><a href="grupos/crear">Crear</a></span>
+        <span><a href="/grupos/lista">Listar</a></span>
+        <span><a href="/grupos/crear">Otro</a></span>
+</div>

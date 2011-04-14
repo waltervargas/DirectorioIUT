@@ -1,9 +1,3 @@
+[% INCLUDE "grupos/menu.tt" %]
 <div id="contenido">
-    <div id="titulo">Grupos</div>
-    <div id="menu2">
-        <div><a href="/grupos/crear">Crear</a></div>
-        <div><a href="/grupos/lista">Listar</a></div>
-        <div><a href="/grupos/crear">Otro</a></div>
-    </div>
-    [% content %] 
 </div>

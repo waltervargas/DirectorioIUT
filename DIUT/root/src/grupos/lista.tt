@@ -1,3 +1,4 @@
+[% INCLUDE "grupos/menu.tt" %]
 <div id="titulo">Lista de Grupos</div>
 <div id="contenido">
     <table>

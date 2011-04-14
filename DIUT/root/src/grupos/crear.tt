@@ -1,3 +1,5 @@
+[% INCLUDE "grupos/menu.tt" %]
+<div id="titulo">Crear Grupos</div>
 <div id="contenido">
     <form>
         <p>Nombres:<input name="nombres" type="text" /></p></form>

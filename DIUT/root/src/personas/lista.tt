@@ -1,3 +1,4 @@
+[% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Lista de Personas</div>
 <div id="conin">
     <table>
