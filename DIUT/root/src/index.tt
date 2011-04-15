@@ -1,7 +1,7 @@
-<div id="contenido">
 <div id="titulo">
-Titulo
+    Titulo
 </div>
+<div id="contenido">
 <img align="center" src="static/images/iut.png" width="300" height="300"/>
-Algo Aqui!
+<div id="sombraredondeada">Registro LDAP</div>
 </div>
