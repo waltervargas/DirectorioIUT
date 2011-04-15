@@ -1,0 +1,19 @@
+Saludos [% nombre %], 
+
+Ha sido creada una cuenta para usted en nuestra plataforma, 
+los datos se describen a continuación:
+
+ * Nombre de Usuario (uid): [% uid %] 
+ * Correo electrónico asociado: [% correo %]
+ * Contraseña: [% passwd %]
+
+Por favor acceda a nuestra plataforma de gestión de contraseñas [1] para
+cambiarla lo antes posible. 
+
+Gracias. 
+
+[1] https://peribeco.covetel.com.ve/
+
+--
+Cooperativa Venezolana de Tecnologías Libres R.S.
+Equipo de Soporte.

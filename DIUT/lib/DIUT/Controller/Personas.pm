@@ -1,6 +1,8 @@
 package DIUT::Controller::Personas;
 use Moose;
 use namespace::autoclean;
+use Covetel::LDAP;
+use Covetel::LDAP::Person;
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -28,7 +30,8 @@ sub index :Path :Args(0) {
 
 sub lista : Local {
     my ( $self, $c ) = @_;
-    my @lista = qw/Dino Carlos Leo Walter/;
+    my $ldap = Covetel::LDAP->new;
+    my @lista = $ldap->person();
     my @opc = qw/Editar Eliminar/;
     $c->stash->{personas} = \@lista;
     $c->stash->{opciones} = \@opc;
@@ -36,6 +39,22 @@ sub lista : Local {
 
 sub crear : Local {
     my ( $self, $c ) = @_;
+    if ($c->req->method eq 'POST'){
+	    my $uid         = $c->req->param("uid");
+	    my $firstname   = $c->req->param("nombres");
+	    my $lastname    = $c->req->param("apellidos");
+
+	    my $person = Covetel::LDAP::Person->new({ 
+			uid => $uid,  
+			firstname => $firstname, 
+			lastname => $lastname,
+		});
+	    my $dn = $person->dn();
+	    if ($person->add){
+	        $c->res->body("La persona ha sido creada exitosamente $dn
+            <a href='/personas/crear/'> Volver </a>");
+	    }
+    }
 }
 
 sub agregar : Local {

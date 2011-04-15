@@ -5,7 +5,7 @@
         [% FOREACH persona IN personas %]
             <tr>
                 <td>
-                    [% persona %]
+                    [% persona.firstname %]
                     [% FOREACH opcion IN opciones %]
                         <td><a href="">[% opcion %]</a></td>
                     [% END %]

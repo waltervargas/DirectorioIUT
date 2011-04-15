@@ -1,15 +1,12 @@
 [% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Crear Persona</div>
 <div id="contenido">
-    <form>
+    <form action="/personas/crear" method="POST">
+        <p>UID:<input name="uid" type="text" /></p>
         <p>Nombres:<input name="nombres" type="text" /></p>
         <p>Apellidos:<input name="apellidos" type="text" /></p>
-        <p>Cedula:<input name="cedula" type="text" /></p>
-        <p>Telefonos:<input name="telefonos" type="text" /></p>
-        <p>Correo:<input name="correo" type="text" /></p>
+        <br />
+        <br />
+        <input type="submit" value="Crear Persona" />
    </form>
-   <div id="opc">
-        <a href="Crear">Crear</a>
-        <a href="Limpiar">Limpiar</a>
-   </div>
 </div>
