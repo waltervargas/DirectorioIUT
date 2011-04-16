@@ -11,5 +11,6 @@
         <br />
         <br />
         <input type="submit" value="Crear Persona" />
+        <input type="reset" value="Limpiar" />
    </form>
 </div>
