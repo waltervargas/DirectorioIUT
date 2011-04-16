@@ -2,6 +2,12 @@
 <div id="titulo">Lista de Grupos</div>
 <div id="contenido">
     <table>
+        <thead> 
+            <th> Identificador </th> 
+            <th> Nombre del Grupo </th> 
+            <th> Detalle </th> 
+            <th> Eliminar </th>
+        </thead>
         [% FOREACH grupo IN grupos %]
             <tr>
                 <td>
