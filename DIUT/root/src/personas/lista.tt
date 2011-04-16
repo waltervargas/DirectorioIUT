@@ -1,14 +1,19 @@
 [% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Lista de Personas</div>
 <div id="conin">
-    <table>
+    <table cellpadding="5" cellspacing="5">
+        <thead> 
+            <th> Identificador </th> 
+            <th> Nombre y Apellido </th> 
+            <th> Detalle </th> 
+            <th> Eliminar </th>
+        </thead>
         [% FOREACH persona IN personas %]
             <tr>
-                <td>
-                    [% persona.firstname %]
-                    [% FOREACH opcion IN opciones %]
-                        <td><a href="">[% opcion %]</a></td>
-                    [% END %]
+                <td> [% persona.uid %] </td>
+                <td> [% persona.firstname %] [% persona.lastname %] </td>
+                <td> <a href="/persona/detalle/[% persona.uid %]"> Detalle </a></td>
+                <td> <a href="/persona/eliminar/[% persona.uid %]"> Eliminar </a></td>
                 </td>
             </tr>
         [% END %]
