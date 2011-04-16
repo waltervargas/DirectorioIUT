@@ -2,8 +2,9 @@
 <div id ="titulo">Agregar a Grupo</div>
 <div id="conin">
     <form>
-        <p>Agregar personas al grupo:<input name="agr" type="text" /></p>
-    </form>
+        <span>Agregar personas al grupo:<input name="agr" type="text" /></span>
+        <span><input type="submit" value="Agregar" /></span>
+    </form></br>
     <span class="inf">Miembros del Grupo:</span></br>
     <span class="inf">-Walter Vargas.</span></br>
     <span class="inf">-Dinorah Carrillo.</span></br>

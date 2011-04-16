@@ -2,9 +2,12 @@
 <div id ="titulo">Crear Persona</div>
 <div id="contenido">
     <form action="/personas/crear" method="POST">
-        <p>UID:<input name="uid" type="text" /></p>
-        <p>Nombres:<input name="nombres" type="text" /></p>
-        <p>Apellidos:<input name="apellidos" type="text" /></p>
+        <div class="form">UID:</div>
+        <div class="form"><input name="uid" type="text" /></div>
+        <div class="form">Nombres:</div>
+        <div class="form"><input name="nombres" type="text" /></div>
+        <div class="form">Apellidos:</div>
+        <div class="form"><input name="apellidos" type="text" /></div>
         <br />
         <br />
         <input type="submit" value="Crear Persona" />
