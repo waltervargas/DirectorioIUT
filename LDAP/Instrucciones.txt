@@ -1,0 +1,21 @@
+Instrucciones (root): 
+
+aptitude install slapd (Password: 123321...)
+
+aptitude install slapd-utils
+
+Antes copiar el fichero slapd.conf a /etc/ldap/. 
+
+invoke-rc.d slapd stop
+
+slapadd -f /etc/ldap/slapd.conf -l estructura.ldif  
+
+slapindex -f /etc/ldap/slapd.conf 
+
+chown openldap.openldap /var/lib/ldap -R  
+
+chown openldap.openldap /etc/ldap/ -R  
+
+vim /etc/default/sladp agregar la ruta del conf nuevo
+
+invoke-rc.d slapd start
