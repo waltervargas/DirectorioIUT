@@ -19,6 +19,7 @@ div {
 
 div.form{
     text-align: left;
+    padding: 0px;
 }
 
 a {
@@ -107,11 +108,6 @@ table {
 td,  tr, th {
     padding: 5px;
     border-spacing: 5px;
-}
-
-div#opc {
-    padding: 30px;
-    float: left;  
 }
 
 div#menu span {
