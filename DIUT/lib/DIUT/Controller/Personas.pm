@@ -32,9 +32,23 @@ sub lista : Local {
     my ( $self, $c ) = @_;
     my $ldap = Covetel::LDAP->new;
     my @lista = $ldap->person();
-    my @opc = qw/Editar Eliminar/;
     $c->stash->{personas} = \@lista;
-    $c->stash->{opciones} = \@opc;
+}
+
+
+sub eliminar : Local {
+    my ( $self, $c, $uid ) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my $person = $ldap->person({uid => $uid});
+    if ($person){
+        if($person->del()){
+            $c->res->body("La persona " . $person->firstname . " ha sido
+                borrada exitosamente <a href='/personas/lista'>Volver</a>");
+        }
+    } else {
+        $c->res->body("Uid no encontrado");
+    }
+    
 }
 
 sub crear : Local {
