@@ -2,12 +2,17 @@
 <div id="titulo">Crear Grupos</div>
 <div id="contenido">
     <form>
-        <p>Nombres:<input name="nombres" type="text" /></p></form>
-        <p>Descripción:<textarea name="descripcion" rows="14" cols="26"></textarea>
+        <div class="form">Nombres:</div>
+        <div class="form"><input name="nombres" type="text" /></div>
     </form>
-    <div id="opc">
-        <a href="Crear">Crear</a>
-        <a href="Limpiar">Limpiar</a>
+    <div class="form">Descripción:</div>
+    <div class="form"><textarea name="descripcion" rows="14"
+    cols="26"></textarea></div>
+    </form>
+    <br />
+    <br />
+    <input type="submit" value="Crear Grupo" />
+    <input type="submit" value="Limpiar" />
     </div>   
 </div>
 
