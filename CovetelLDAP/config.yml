@@ -3,6 +3,7 @@ Covetel::LDAP:
    host: localhost
    base: dc=iutai,dc=tec,dc=ve
    base_personas: ou=Personas,dc=iutai,dc=tec,dc=ve
+   base_grupos: ou=Grupos,dc=iutai,dc=tec,dc=ve
    dn: cn=admin,dc=iutai,dc=tec,dc=ve
    password: 123321...
    start_tls: 0
