@@ -3,6 +3,7 @@ use Moose;
 use Net::LDAP;
 use Net::LDAPS;
 use Config::Any::YAML;
+use utf8;
 
 has server  => (
     is      => "ro",

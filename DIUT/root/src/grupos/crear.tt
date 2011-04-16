@@ -1,16 +1,14 @@
 [% INCLUDE "grupos/menu.tt" %]
 <div id="titulo">Crear Grupos</div>
 <div id="contenido">
-    <form>
-        <div class="form">Nombres:</div>
-        <div class="form"><input name="nombres" type="text" /></div>
-    <div class="form">Descripción:</div>
-    <div class="form"><textarea name="descripcion" rows="14"
-    cols="26"></textarea></div>
-    <br />
-    <br />
-    <input type="submit" value="Crear Grupo" />
-    <input type="reset" value="Limpiar" /> 
+    <form action="/grupos/crear" method="POST">
+        <div class="form">Nombre:</div>
+        <div class="form"><input name="nombre" type="text" /></div>
+        <div class="form">Descripción:</div>
+        <div class="form"><textarea name="descripcion" rows="14" cols="26"></textarea></div>
+        <br />
+        <input type="submit" value="Crear Grupo" />
+        <input type="reset" value="Limpiar" /> 
     </form>   
 </div>
 

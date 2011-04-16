@@ -1,6 +1,10 @@
 package DIUT::Controller::Grupos;
 use Moose;
 use namespace::autoclean;
+use Covetel::LDAP;
+use Covetel::LDAP::Group;
+use utf8;
+
 
 BEGIN {extends 'Catalyst::Controller'; }
 
@@ -28,8 +32,24 @@ sub index :Path :Args(0) {
 
 sub crear : Local {
     my ( $self, $c ) = @_;
-    my @grupo = qw/Alumnos Profesores/;
-    $c->stash->{grupos} = \@grupo
+    if ($c->req->method eq 'POST'){
+	    my $grupo       = $c->req->param("nombre");
+	    my $descripcion = $c->req->param("descripcion");
+
+        my $ldap = Covetel::LDAP->new;
+        my $group = Covetel::LDAP::Group->new({ 
+            nombre => $grupo, 
+            descripcion => $descripcion, 
+		    ldap => $ldap 
+	    });
+        
+        $c->log->debug($group->dn());
+
+        if ($group->add()){
+	        $c->res->body("El grupo $grupo ha sido creado exitosamente 
+            <a href='/grupos/crear/'> Volver </a>");
+	    }
+    }
 }
 
 sub lista : Local {

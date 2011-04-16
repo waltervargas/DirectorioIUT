@@ -4,6 +4,7 @@ use Covetel::LDAP;
 use Net::LDAP::Entry;
 use Digest::MD5 qw(md5 md5_hex md5_base64);
 use Covetel::Email;
+use utf8;
 
 extends 'Covetel::Person';
 
