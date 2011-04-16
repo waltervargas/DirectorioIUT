@@ -4,15 +4,13 @@
     <form>
         <div class="form">Nombres:</div>
         <div class="form"><input name="nombres" type="text" /></div>
-    </form>
     <div class="form">Descripción:</div>
     <div class="form"><textarea name="descripcion" rows="14"
     cols="26"></textarea></div>
-    </form>
     <br />
     <br />
     <input type="submit" value="Crear Grupo" />
-    <input type="submit" value="Limpiar" />
-    </div>   
+    <input type="reset" value="Limpiar" /> 
+    </form>   
 </div>
 
