@@ -54,12 +54,26 @@ sub crear : Local {
 
 sub lista : Local {
     my ( $self, $c ) = @_;
-    my @grupo = qw/Alumno Prefesores/;
-    my @descrip = qw/Grupo_de_Alumnos Grupo_de_Profesores/;
-    my @opc = qw/Editar Eliminar/;
-    $c->stash->{grupos} = \@grupo;
-    $c->stash->{descripcion} = \@descrip;
-    $c->stash->{opciones} = \@opc;
+    my $ldap = Covetel::LDAP->new;
+    my @lista = $ldap->group();
+    $c->stash->{grupos} = \@lista;
+}
+
+sub eliminar : Local {
+    my ( $self, $c, $cn) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my @grupos = $ldap->group();
+
+    foreach my $grupo (@grupos){
+        $c->log->debug($grupo->entry->get_value('cn'));
+        if ($grupo->entry->get_value('cn') eq $cn){
+            if($grupo->del()){
+                $c->res->body("Fue eliminado satisfactoriamente el grupo $cn  <a
+                href='/grupos/lista'> Volver </a>");
+            }
+        } 
+    }
+
 }
 
 =head1 AUTHOR

@@ -11,13 +11,17 @@
         [% FOREACH grupo IN grupos %]
             <tr>
                 <td>
-                    [% grupo %]
-                    [% FOREACH desc IN descripcion %]
-                <td>[% desc %]</td>
-                [% END %] 
-                [% FOREACH opc IN opciones %]
-                    <td><a href="">[% opc %]</a></td>
-                [% END %]              
+                    [% grupo.nombre %]
+                </td>
+                <td>
+                    [% grupo.descripcion %]
+                </td>
+                <td>
+                    <a href="#"> Detalle </a>
+                </td>
+                <td>
+                    <a href="/grupos/eliminar/[%
+                    grupo.entry.get_value('cn') %]"> Eliminar </a>
                 </td>
             </tr>
         [% END %]

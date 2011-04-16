@@ -84,6 +84,39 @@ sub person {
 	}
 }
 
+sub group {
+	my ($self, $attrs) = @_;
+    $attrs = {objectClass => "posixGroup"} unless $attrs;
+	my $filter;
+	my @keys = keys %{$attrs};
+	foreach (@keys){
+		$filter .= "($_=$attrs->{$_})";
+	}
+	if ($#keys > 0){
+		$filter = "(|".$filter.")";
+	}
+	my $base = $self->config->{'Covetel::LDAP'}->{'base_grupos'};
+	my $resp = $self->search({base => $base, filter => $filter, attrs => ['cn','description']});
+	my @grupos;
+	if ($resp->count() > 0){
+		foreach my $e ($resp->entries()){
+            my $group = Covetel::LDAP::Group->new({
+                    nombre       => $e->get_value('cn'),
+                    descripcion => $e->get_value('description'),
+                    ldap    => $self, 
+                });
+			push @grupos, $group;
+		}	
+		if (wantarray){
+			return @grupos; 
+		} else {
+			return $grupos[0];
+		}
+	} else {
+		return 0;
+	}
+}
+
 sub search {
 	my ($self, $options) = @_;
 	my ($base, $attrs, $filter);
