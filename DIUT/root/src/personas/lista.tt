@@ -1,7 +1,7 @@
 [% INCLUDE "personas/menu.tt" %]
 <div id ="titulo">Lista de Personas</div>
 <div id="conin">
-    <table cellpadding="5" cellspacing="5">
+    <table>
         <thead> 
             <th> Identificador </th> 
             <th> Nombre y Apellido </th> 

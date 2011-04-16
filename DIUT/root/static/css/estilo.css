@@ -17,6 +17,10 @@ div {
     padding: 5px;
 }
 
+div.form{
+    text-align: left;
+}
+
 a {
     text-decoration: none;
 }
@@ -94,10 +98,15 @@ p, form{
     text-align: left;
 }
 
-table, tr{
+table {
     border-collapse: collapse;
     border:1px solid black;
-    text-align: left;
+    text-align: center;
+}
+
+td,  tr, th {
+    padding: 5px;
+    border-spacing: 5px;
 }
 
 div#opc {
