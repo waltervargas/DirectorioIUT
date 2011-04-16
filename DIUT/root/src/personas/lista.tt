@@ -12,8 +12,8 @@
             <tr>
                 <td> [% persona.uid %] </td>
                 <td> [% persona.firstname %] [% persona.lastname %] </td>
-                <td> <a href="/persona/detalle/[% persona.uid %]"> Detalle </a></td>
-                <td> <a href="/persona/eliminar/[% persona.uid %]"> Eliminar </a></td>
+                <td> <a href="/personas/detalle/[% persona.uid %]"> Detalle </a></td>
+                <td> <a href="/personas/eliminar/[% persona.uid %]"> Eliminar </a></td>
                 </td>
             </tr>
         [% END %]
