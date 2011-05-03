@@ -6,7 +6,7 @@ use Covetel::LDAP::Group;
 use utf8;
 
 
-BEGIN {extends 'Catalyst::Controller'; }
+BEGIN {extends 'Catalyst::Controller::HTML::FormFu'; }
 
 =head1 NAME
 
@@ -30,25 +30,29 @@ sub index :Path :Args(0) {
     $c->response->body();
 }
 
-sub crear : Local {
+sub crear : Local  : FormConfig {
     my ( $self, $c ) = @_;
+    
     if ($c->req->method eq 'POST'){
 	    my $grupo       = $c->req->param("nombre");
 	    my $descripcion = $c->req->param("descripcion");
 
+        #Envia el nuevo Usuario a LDAP
         my $ldap = Covetel::LDAP->new;
         my $group = Covetel::LDAP::Group->new({ 
             nombre => $grupo, 
             descripcion => $descripcion, 
 		    ldap => $ldap 
 	    });
-        
+
         $c->log->debug($group->dn());
 
         if ($group->add()){
 	        $c->res->body("El grupo $grupo ha sido creado exitosamente 
             <a href='/grupos/crear/'> Volver </a>");
-	    }
+	    }else{
+            $c->res->body("El nombre del grupo: $grupo y la descripcion: $descripcion, No se creo el grupo");
+        }
     }
 }
 
