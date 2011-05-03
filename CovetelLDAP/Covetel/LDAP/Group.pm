@@ -38,8 +38,8 @@ has descripcion => (
 has gidNumber => (
 	is 		=> 'rw',
 	isa 	=> 'Int', 
-	default => sub { 1000 + int rand 4000 },
-	lazy 	=> 1
+	lazy 	=> 0, 
+    builder => "_build_gidNumber",
 );
 
 sub _build_dn {
@@ -47,6 +47,30 @@ sub _build_dn {
 	
     my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_grupos'};
 	my $dn = 'cn='.$self->nombre.','.$base;
+}
+
+
+sub _build_gidNumber {
+    my $self = shift; 
+
+    my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_mantenimiento'};
+    my $g_mantenimiento = $self->ldap->config->{'Covetel::LDAP'}->{'grupo_mantenimiento'};
+
+    # Obtengo el uid del grupo de mantenimiento. 
+    my $resp = $self->ldap->search({
+            base => $base,
+            filter => "($g_mantenimiento)", 
+            scope => 'one', 
+            attrs => ['gidNumber'] , 
+    });
+
+    if ($resp->count() > 0){
+        my $gidNumber = $resp->entry(0)->get_value('gidNumber'); 
+        return ++$gidNumber;
+    } else {
+        die "Problemas con el grupo de mantenimiento en el LDAP"; 
+    }
+    
 }
 
 sub _build_entry {
@@ -77,7 +101,20 @@ sub add {
 	if ($mesg->is_error()){
 		return 0;
 	} else {
-		return 1;
+        # Incremento el valor uidNumber en el usuario de mantenimiento. 
+        my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_mantenimiento'};
+        my $g_mantenimiento = $self->ldap->config->{'Covetel::LDAP'}->{'grupo_mantenimiento'};
+        my $dn = "$g_mantenimiento,$base";
+        my $mesg = $self->ldap->server->modify( $dn,
+            increment => {
+                gidNumber => 1 # increment gidNumber by 1
+            }
+        );
+        if ($mesg->is_error()){
+            die "Problemas al incrementar el ID del grupo de mantenimiento";
+        } else {
+		    return 1;
+        }
 	}
 }
 

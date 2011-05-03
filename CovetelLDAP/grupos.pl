@@ -10,5 +10,5 @@ my @groups = $ldap->group();
 
 use Data::Dumper;
 foreach (@groups){
-    print $_->nombre(), "\n";
+    print $_->nombre(),"\t",$_->gidNumber(), "\n";
 }

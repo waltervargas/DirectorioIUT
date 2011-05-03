@@ -99,13 +99,15 @@ sub group {
 		$filter = "(|".$filter.")";
 	}
 	my $base = $self->config->{'Covetel::LDAP'}->{'base_grupos'};
-	my $resp = $self->search({base => $base, filter => $filter, attrs => ['cn','description']});
+	my $resp = $self->search({base => $base, filter => $filter, attrs =>
+            ['cn','description', 'gidNumber']});
 	my @grupos;
 	if ($resp->count() > 0){
 		foreach my $e ($resp->entries()){
             my $group = Covetel::LDAP::Group->new({
                     nombre       => $e->get_value('cn'),
                     descripcion => $e->get_value('description'),
+                    gidNumber => $e->get_value('gidNumber'),
                     ldap    => $self, 
                 });
 			push @grupos, $group;

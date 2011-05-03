@@ -8,7 +8,7 @@ use utf8;
 
 my $ldap = Covetel::LDAP->new;
 
-my $nombre = "Admin-DIUT";
+my $nombre = "Comedor";
 my $descripcion = "Grupo de Administradores del Directorio IUT";
 
 my $group = Covetel::LDAP::Group->new(
@@ -20,7 +20,7 @@ my $group = Covetel::LDAP::Group->new(
 );
 
 if ($group->add()){
-	print "The group ".$group->dn." has been created \n";
+	print "The group ".$group->dn." has been created ". $group->gidNumber() ."  \n";
 } else {
 	$group->ldap->print_error();
 }

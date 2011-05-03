@@ -6,6 +6,7 @@ Covetel::LDAP:
    base_grupos: ou=Grupos,dc=iutai,dc=tec,dc=ve
    base_mantenimiento: ou=Mantenimiento,dc=iutai,dc=tec,dc=ve
    usuario_mantenimiento: cn=Usuario Mantenimiento
+   grupo_mantenimiento: cn=Grupo Mantenimiento
    dn: cn=admin,dc=iutai,dc=tec,dc=ve
    password: 123321...
    start_tls: 0
