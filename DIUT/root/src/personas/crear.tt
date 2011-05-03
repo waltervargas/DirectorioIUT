@@ -1,5 +1,12 @@
 [% INCLUDE "personas/menu.tt" %]
-<div id ="titulo">Crear Persona</div>
+[% form %]
+
+
+
+
+
+
+<!-- <div id ="titulo">Crear Persona</div>
 <div id="contenido">
     <form action="/personas/crear" method="POST">
         <div class="form">UID:</div>
@@ -13,4 +20,4 @@
         <input type="submit" value="Crear Persona" />
         <input type="reset" value="Limpiar" />
    </form>
-</div>
+</div> -->

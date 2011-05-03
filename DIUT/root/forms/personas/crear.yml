@@ -1,0 +1,136 @@
+action: /personas/crear
+# indicator is the field that is used to test for form submission
+indicator: Botones.submit
+
+# Start listing the form elements
+#auto_fieldset: 1
+
+languages:
+    - es
+
+elements:
+    - type: Fieldset
+      name: datos_fieldset
+      legend: Datos Generales de la Persona.
+      elements:
+        - type: Block
+          tag: div
+          content: 'Por favor ingrese los datos de la Persona'
+          attributes:
+              class: informacion
+
+        - type: Text
+          name: nombre
+          label: Nombre
+          attributes:
+              title: 'Por favor ingrese el primer nombre del usuario'
+              class: input_text
+              id: nombre
+          constraints:
+            - Required
+            - type: Length
+              min: 2
+              max: 250
+
+        - type: Text
+          name: apellido
+          label: Apellido
+          attributes:
+              title: 'Por favor ingrese el primer apellido del usuario'
+              class: input_text
+              id: apellido
+          constraints:
+            - Required
+            - type: Length
+              min: 2
+              max: 250
+
+        - type: Text
+          name: uid
+          label: Identificador
+          attributes:
+              title: 'Por favor ingrese el identificador del usuario'
+              class: input_text
+              id: uid
+          constraints:
+            - Required
+            - type: Length
+              min: 4
+              max: 250
+
+        - type: Text
+          name: mail
+          label: Correo Electrónico
+          attributes:
+              title: 'Por favor ingrese el Correo Electrónico del usuario'
+              class: input_text
+              id: mail
+          constraints:
+            - Required
+            - type: Length
+              min: 5
+              max: 250
+
+    - type: Fieldset
+      name: datos_fieldset
+      legend: Contraseña
+      attributes: 
+          id: claves
+      elements:
+        - type: Block
+          tag: div
+          content: 'Por favor ingrese una contraseña fuerte, de al menos cuatro caracteres y repitala en el siguiente campo, recuerde que debe ser igual en ambos campos.'
+          attributes:
+              class: informacion
+
+        - type: Password
+          name: passwd
+          label: Contraseña
+          attributes:
+              title: 'Por favor ingrese la contraseña'
+              class: input_text
+              id: passwd
+          constraints:
+            - Required
+            - type: Length
+              min: 4
+              max: 250
+
+        - type: Password
+          name: passwd2
+          label: Repita la contraseña
+          attributes:
+              title: 'Por favor repita la contraseña'
+              class: input_text
+              id: passwd2
+          constraints:
+            - Required
+            - type: Length
+              min: 4
+              max: 250
+
+    # The Submit button
+    - type: Multi
+      name: Botones
+      elements:
+        - type: Submit
+          name: submit
+          # The text to be displayed
+          value: Crear Persona
+          attributes:
+              title: Presione este botón para crear la persona.
+              class: input_submit
+              id: crear_persona_submit
+        
+        - type: Reset
+          name: reset
+          # The text to be displayed
+          value: Reiniciar
+          attributes:
+              title: Presione este botón para inicializar en blanco los campos del formulario.
+              class: input_reset
+
+filter:
+    # Filtrado de espacios en blanco y caracteres HTML
+    - TrimEdges
+    - HTMLEscape    

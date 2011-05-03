@@ -14,6 +14,7 @@ __PACKAGE__->config(
     render_die => 1,
     WRAPPER => 'header.tt', 
     CATALYST_VAR => 'c', 
+    encoding => 'UTF-8', 
 );
 
 =head1 NAME

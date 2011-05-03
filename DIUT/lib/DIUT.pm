@@ -13,9 +13,16 @@ use Catalyst::Runtime 5.80;
 #                 directory
 
 use Catalyst qw/
+    Unicode::Encoding
     -Debug
     ConfigLoader
     Static::Simple
+
+    Authentication
+    Session
+    Session::Store::FastMmap
+    Session::State::Cookie
+    
 /;
 
 extends 'Catalyst';
@@ -36,6 +43,32 @@ __PACKAGE__->config(
     name => 'DIUT',
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
+);
+
+
+__PACKAGE__->config({
+ 'Plugin::Authentication' => {
+ default => {
+    credential => {
+        class => 'Password', 
+        password_field => 'password', 
+        password_type => 'clear', 
+    },  
+    store => {
+        class => 'Minimal', 
+        users => {
+            admin => {
+                password => "123321...",
+            },
+        }
+       
+    }   
+ }
+}, 
+});
+
+__PACKAGE__->config(
+    'Plugin::ConfigLoader' => { file => 'configuracion.yml' },
 );
 
 # Start the application

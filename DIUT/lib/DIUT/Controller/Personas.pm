@@ -3,8 +3,9 @@ use Moose;
 use namespace::autoclean;
 use Covetel::LDAP;
 use Covetel::LDAP::Person;
+use utf8;
 
-BEGIN {extends 'Catalyst::Controller'; }
+BEGIN {extends 'Catalyst::Controller::HTML::FormFu'; }
 
 =head1 NAME
 
@@ -51,8 +52,11 @@ sub eliminar : Local {
     
 }
 
-sub crear : Local {
+sub crear : Local : FormConfig {
     my ( $self, $c ) = @_;
+    
+    $c->log->debug($c->encoding->name);
+
     if ($c->req->method eq 'POST'){
 	    my $uid         = $c->req->param("uid");
 	    my $firstname   = $c->req->param("nombres");

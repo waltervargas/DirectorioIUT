@@ -51,8 +51,7 @@ uid: umantenimiento
 userPassword:: e01ENX1NV2llLzE5UGtsVHV1U1ByY1luZVN3PT0=
 gidNumber: 1000
 homeDirectory: /home/users/umantenimiento
-description: Este usuario se usa para calcular el proximo uidNumber, no borrar
- !
+description: Este usuario se usa para calcular el proximo uidNumber, no borrar!
 uidNumber: 1001
 structuralObjectClass: inetOrgPerson
 entryUUID: 988296de-faa9-102f-9d58-d18a98ec551f
@@ -118,7 +117,7 @@ entryUUID: 9887abf6-faa9-102f-9d5c-d18a98ec551f
 creatorsName: cn=admin,dc=iutai,dc=tec,dc=ve
 createTimestamp: 20110414061009Z
 entryCSN: 20110414061009.584599Z#000000#000#000000
-modifiersName: cn=admin,dc=iutai,dc=tec,dc=ve
+modifiersName: cn=admin,dc=iutai,dc=tec,dc=ve 
 modifyTimestamp: 20110414061009Z
 
 dn: ou=Personas,dc=iutai,dc=tec,dc=ve
