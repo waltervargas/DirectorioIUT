@@ -7,8 +7,10 @@ use Data::Dumper;
 use utf8;
 
 my $ldap = Covetel::LDAP->new;
-my $nombre = "pedro";
-my $descripcion = "descripcion";
+
+my $nombre = "Admin-DIUT";
+my $descripcion = "Grupo de Administradores del Directorio IUT";
+
 my $group = Covetel::LDAP::Group->new(
     { 
         nombre => $nombre, 

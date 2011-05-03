@@ -4,6 +4,8 @@ use Net::LDAP;
 use Net::LDAPS;
 use Config::Any::YAML;
 use utf8;
+use Data::Dumper;
+use 5.010;
 
 has server  => (
     is      => "ro",
@@ -68,6 +70,7 @@ sub person {
                     uid       => $e->get_value('uid'),
                     firstname => $e->get_value('givenName'),
 					lastname  => $e->get_value('sn'),
+					uidNumber => $e->get_value('uidNumber'),
 					dn  => $e->dn,
                     ldap    => $self, 
                 }
@@ -127,6 +130,8 @@ sub search {
 	} else {
 		$base = $options->{'base'};
 	}
+
+    my $scope = $options->{'scope'} // 'sub';
 	
 	# attrs list.
 	if (!$options->{'attrs'}){
@@ -137,14 +142,14 @@ sub search {
 	
 	# default filter
 	if (!$options->{'filter'}){
-		$filter = '(objectClass=*)';
+        $filter = '';
 	} else {
 		$filter = $options->{'filter'};
 	}
 
     my $result = $self->server->search(
         base   => $base,
-        scope  => 'sub',
+        scope  => $scope,
         filter => $filter,
         attrs  => $attrs
     );

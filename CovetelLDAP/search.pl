@@ -4,15 +4,17 @@ use warnings;
 use Covetel::LDAP;
 use Covetel::LDAP::Person;
 
-my $uid = $ARGV[0];
+my $filter = $ARGV[0];
 
 my $ldap = Covetel::LDAP->new;
 
-my @persons = $ldap->person({uid => $uid});
+my $resp = $ldap->search(
+    {
+        base => 'ou=Mantenimiento,dc=iutai,dc=tec,dc=ve',
+        filter => '(cn=Usuario Mantenimiento)', 
+        attrs => ['uidNumber'] , 
+    }
+);
 
 use Data::Dumper;
-foreach (@persons){
-    print $_->dn(), "\n";
-    print Dumper($_);
-
-}
+print Dumper $resp->entry(0)->get_value('uidNumber');

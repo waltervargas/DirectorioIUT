@@ -28,8 +28,8 @@ has uid 	=> (
 has uidNumber => (
 	is 		=> 'rw',
 	isa 	=> 'Int',
-	default => sub { int rand 4000 },
-	lazy 	=> 1
+	lazy 	=> 0, 
+    builder => "_build_uidNumber", 
 );
 
 has ldap => (
@@ -56,6 +56,29 @@ sub password {
 	$p = "{MD5}".$p."==";
 	$self->entry->add(userPassword => $p); 
     $self->passwd($password);
+}
+
+sub _build_uidNumber {
+    my $self = shift; 
+
+    my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_mantenimiento'};
+    my $u_mantenimiento = $self->ldap->config->{'Covetel::LDAP'}->{'usuario_mantenimiento'};
+
+    # Obtengo el uid del usuario de mantenimiento. 
+    my $resp = $self->ldap->search({
+            base => $base,
+            filter => "($u_mantenimiento)", 
+            scope => 'one', 
+            attrs => ['uidNumber'] , 
+    });
+
+    if ($resp->count() > 0){
+        my $uidNumber = $resp->entry(0)->get_value('uidNumber'); 
+        return ++$uidNumber;
+    } else {
+        die "Problemas con el usuario de mantenimiento en el LDAP"; 
+    }
+    
 }
 
 sub _build_entry {
@@ -90,7 +113,20 @@ sub add {
 	if ($mesg->is_error()){
 		return 0;
 	} else {
-		return 1;
+        # Incremento el valor uidNumber en el usuario de mantenimiento. 
+        my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_mantenimiento'};
+        my $u_mantenimiento = $self->ldap->config->{'Covetel::LDAP'}->{'usuario_mantenimiento'};
+        my $dn = "$u_mantenimiento,$base";
+        my $mesg = $self->ldap->server->modify( $dn,
+            increment => {
+                uidNumber => 1 # increment uidNumber by 1
+            }
+        );
+        if ($mesg->is_error()){
+            die "Problemas al incrementar el ID del usuario de mantenimiento";
+        } else {
+		    return 1;
+        }
 	}
 }
 
