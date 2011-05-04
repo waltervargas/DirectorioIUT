@@ -2,6 +2,5 @@
     Titulo
 </div>
 <div id="contenido">
-<img align="center" src="static/images/iut.png" width="300" height="300"/>
-<div id="sombraredondeada">Registro LDAP</div>
+<input name="fecha" id="fecha" />
 </div>

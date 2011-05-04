@@ -1,29 +1,17 @@
-[% INCLUDE "grupos/menu.tt" %]
-<div id="titulo">Lista de Grupos</div>
+<p> 
+ <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
+</p>
+
 <div id="contenido">
-    <table>
+    <table id="lista_grupos" class="dataTable" width="100%">
         <thead> 
-            <th> Identificador </th> 
-            <th> Nombre del Grupo </th> 
-            <th> Detalle </th> 
-            <th> Eliminar </th>
-        </thead>
-        [% FOREACH grupo IN grupos %]
             <tr>
-                <td>
-                    [% grupo.nombre %]
-                </td>
-                <td>
-                    [% grupo.descripcion %]
-                </td>
-                <td>
-                    <a href="#"> Detalle </a>
-                </td>
-                <td>
-                    <a href="/grupos/eliminar/[%
-                    grupo.entry.get_value('cn') %]"> Eliminar </a>
-                </td>
+                <th> Nombre del Grupo </th> 
+                <th> Descripción </th> 
             </tr>
-        [% END %]
+        </thead>
+        <tbody>
+        </tbody>
     </table>
+
 </div>
