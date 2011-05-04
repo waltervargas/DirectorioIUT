@@ -1,0 +1,14 @@
+[% form %]
+
+<!-- <div id ="titulo">Ingresar al Sistema</div>
+<div id="contenido">
+    <form action="/login" method="POST">
+        <div class="login">Login:</div>
+        <div class="login"><input name="uid" type="text" /></div>
+        <div class="login">Password:</div>
+        <div class="login"><input name="nombres" type="password" /></div>
+        <br />
+        <br />
+        <input type="submit" value="Ingresar" />
+    </form>
+</div> -->

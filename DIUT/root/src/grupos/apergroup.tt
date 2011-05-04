@@ -1,0 +1,26 @@
+[% INCLUDE "grupos/menu.tt" %]
+<div id="titulo">Nombre del Grupo</div>
+<div id="contenido">
+    <div>Personas a Agregar
+        <br><input type="textarea" />
+        <br><input type="submit" value="Agregar" />
+    </div>
+    <div>Personas
+    <table>
+        <thead> 
+            <th> Nombre </th> 
+            <th> Apellido </th> 
+            <th> Cedula </th>
+            <th> Telefono </th>
+            <th> Correo </th>
+        </thead>
+            <tr>
+                <td>Walter</td>
+                <td>Vargas</td>
+                <td>noc</td>
+                <td>55555555</td>
+                <td>walter@tucosito.com</td>
+            </tr>
+    </table>
+    </div>
+</div>
