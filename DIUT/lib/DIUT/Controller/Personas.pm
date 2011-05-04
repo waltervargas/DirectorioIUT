@@ -55,6 +55,10 @@ sub eliminar : Local {
 sub crear : Local : FormConfig {
     my ( $self, $c ) = @_;
     
+	# Clases para los campos requeridos. 
+    my $form = $c->stash->{form};
+	$form->auto_constraint_class( 'constraint_%t' );
+
     $c->log->debug($c->encoding->name);
 
     if ($c->req->method eq 'POST'){

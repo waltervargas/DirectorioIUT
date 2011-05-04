@@ -32,6 +32,10 @@ sub index :Path :Args(0) {
 
 sub crear : Local  : FormConfig {
     my ( $self, $c ) = @_;
+
+	# Clases para los campos requeridos. 
+    my $form = $c->stash->{form};
+	$form->auto_constraint_class( 'constraint_%t' );
     
     if ($c->req->method eq 'POST'){
 	    my $grupo       = $c->req->param("nombre");
