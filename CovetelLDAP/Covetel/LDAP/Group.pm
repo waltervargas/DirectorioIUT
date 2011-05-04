@@ -42,6 +42,23 @@ has gidNumber => (
     builder => "_build_gidNumber",
 );
 
+has members => (
+    is      => 'rw', 
+    isa     => 'ArrayRef'
+);
+
+sub add_member {
+	my ($self, $uid) = @_;
+    my $dn = $self->dn();
+    $self->ldap->server->modify($dn, replace => { 'memberUid' => [$uid] });
+} 
+
+sub _base_groups {
+    my $self = shift; 
+    my $base = $self->ldap->config->{'Covetel::LDAP'}->{'base_grupos'};
+    return $base;
+}
+
 sub _build_dn {
 	my $self = shift;
 	

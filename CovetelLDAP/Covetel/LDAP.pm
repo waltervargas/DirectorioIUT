@@ -100,7 +100,7 @@ sub group {
 	}
 	my $base = $self->config->{'Covetel::LDAP'}->{'base_grupos'};
 	my $resp = $self->search({base => $base, filter => $filter, attrs =>
-            ['cn','description', 'gidNumber']});
+            ['cn','description', 'gidNumber', 'memberUid']});
 	my @grupos;
 	if ($resp->count() > 0){
 		foreach my $e ($resp->entries()){
@@ -108,6 +108,8 @@ sub group {
                     nombre       => $e->get_value('cn'),
                     descripcion => $e->get_value('description'),
                     gidNumber => $e->get_value('gidNumber'),
+                    members => [$e->get_value('memberUid')],
+                    entry   => $e, 
                     ldap    => $self, 
                 });
 			push @grupos, $group;
