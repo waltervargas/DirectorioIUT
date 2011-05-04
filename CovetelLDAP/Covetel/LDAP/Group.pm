@@ -3,6 +3,7 @@ use Moose;
 use Covetel::LDAP;
 use Net::LDAP::Entry;
 use utf8;
+use 5.010;
 
 has entry    => (
     is      => "ro",
@@ -30,7 +31,7 @@ has nombre => (
     isa     => "Str", 
 );
 
-has descripcion => (
+has description => (
     is      => "rw", 
     isa     => "Str", 
 );
@@ -49,8 +50,12 @@ has members => (
 
 sub add_member {
 	my ($self, $uid) = @_;
-    my $dn = $self->dn();
-    $self->ldap->server->modify($dn, replace => { 'memberUid' => [$uid] });
+    my $members = $self->members; 
+
+    unless ($uid ~~ @{$members}) {
+        push @{$members}, $uid;
+        $self->members($members);
+    } 
 } 
 
 sub _base_groups {
@@ -100,6 +105,7 @@ sub _build_entry {
 	$entry->add(cn => $self->nombre);
 	$entry->add(gidNumber => $self->gidNumber);
     $entry->add(description => $self->descripcion);
+    $entry->add(memberUid => $self->members);
 
     return $entry;
 }
@@ -144,6 +150,23 @@ sub del {
 	} else {
 		return 1;
 	}
+}
+
+
+sub update {
+    my $self = shift; 
+    my $entry = $self->entry;
+    $entry->replace(
+        description => $self->description, 
+        gidNumber => $self->gidNumber,  
+        memberUid => $self->members, 
+    );
+    my $mesg = $entry->update($self->ldap->server);
+    if ($mesg->is_error()){
+        die "Problemas al actualizar la entrada Group->update";
+    } else {
+       return 1;
+    }
 }
 
 1;
