@@ -38,9 +38,12 @@ sub personas : Local : ActionClass('REST') {}
 sub grupos_GET {
 	my ($self, $c) = @_;
     my %datos; 
+    
+    my $ldap = Covetel::LDAP->new;
+    my @lista = $ldap->group();
 
     $datos{aaData} = [
-        map { [ "profesores $_",  "Grupo de Profesores $_" ] } 1..100000, 
+        map { [ $_->gidNumber, $_->nombre,  $_->description ] } @lista, 
     ];
 
 	$self->status_ok($c, entity => \%datos);
@@ -49,20 +52,24 @@ sub grupos_GET {
 sub personas_GET {
     my ( $self, $c ) = @_;
     
+    my $ldap = Covetel::LDAP->new;
+    my @lista = $ldap->person();
+
     my %datos; 
     
     $datos{aaData} = [
-        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
-        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
-        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
-        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
-        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
-        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
-        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
-        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
-        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
-        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+        map {
+            [ 
+            $_->firstname, 
+            $_->lastname, 
+            $_->ced, 
+            $_->email,  
+            $_->uidNumber, 
+            $_->uid, 
+            ]
+        } @lista, 
     ];
+
 	$self->status_ok($c, entity => \%datos);
 }
 

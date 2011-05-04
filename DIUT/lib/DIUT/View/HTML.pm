@@ -2,6 +2,7 @@ package DIUT::View::HTML;
 
 use strict;
 use warnings;
+use utf8;
 
 use base 'Catalyst::View::TT';
 

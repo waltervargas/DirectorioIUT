@@ -6,6 +6,7 @@
     <table id="lista_grupos" class="dataTable" width="100%">
         <thead> 
             <tr>
+                <th> GID </th> 
                 <th> Nombre del Grupo </th> 
                 <th> Descripción </th> 
             </tr>
@@ -13,5 +14,4 @@
         <tbody>
         </tbody>
     </table>
-
 </div>

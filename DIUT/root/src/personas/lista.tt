@@ -12,6 +12,8 @@
             <th> Apellido </th> 
             <th> Cedula </th> 
             <th> Correo </th>
+            <th> UID </th> 
+            <th> NumberID </th> 
            </tr>
         </thead>
         <tbody>

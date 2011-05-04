@@ -62,7 +62,7 @@ sub person {
 	}
 	my $base = $self->config->{'Covetel::LDAP'}->{'base_personas'};
 	my $resp = $self->search({base => $base, filter => $filter, attrs =>
-            ['uid','cn','sn','givenName','dn', 'uidNumber']});
+            ['uid','cn','sn','givenName','dn', 'uidNumber', 'mail', 'pager']});
 	my @personas;
 	if ($resp->count() > 0){
 		foreach my $e ($resp->entries()){
@@ -72,6 +72,8 @@ sub person {
                     firstname => $e->get_value('givenName'),
 					lastname  => $e->get_value('sn'),
 					uidNumber => $e->get_value('uidNumber'),
+					email => $e->get_value('mail') // '--' ,
+					ced => $e->get_value('pager') // '--',
 					dn  => $e->dn,
                     ldap    => $self, 
                 }

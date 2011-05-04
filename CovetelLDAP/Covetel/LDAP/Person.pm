@@ -94,6 +94,8 @@ sub _build_entry {
 	$entry->add(gidNumber => $self->uidNumber);
 	$entry->add(sn => $self->lastname);
 	$entry->add(givenName => $self->firstname);
+	$entry->add(pager => $self->ced);
+	$entry->add(mail => $self->email);
 	$entry->add(homeDirectory => '/home/'.$self->uid);
 	return $entry;
 }
