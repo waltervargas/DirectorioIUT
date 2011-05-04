@@ -104,7 +104,7 @@ sub _build_entry {
 	$entry->add(objectClass => ['top', 'posixGroup']);
 	$entry->add(cn => $self->nombre);
 	$entry->add(gidNumber => $self->gidNumber);
-    $entry->add(description => $self->descripcion);
+    $entry->add(description => $self->description);
     $entry->add(memberUid => $self->members);
 
     return $entry;
