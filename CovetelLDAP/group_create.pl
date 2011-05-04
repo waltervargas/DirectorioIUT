@@ -8,7 +8,7 @@ use utf8;
 
 my $ldap = Covetel::LDAP->new;
 
-my $nombre = "Comedor";
+my $nombre = "Futbol";
 my $descripcion = "Grupo de Administradores del Directorio IUT";
 
 my $group = Covetel::LDAP::Group->new(
