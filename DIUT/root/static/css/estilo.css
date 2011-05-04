@@ -5,9 +5,20 @@ body {
     font-family: FreeSans, Verdana ,sans-serif; 
 }
 
+a.enlace {
+ color: #20c; 
+ padding: 5px;
+ font-size: 12pt;
+ font-weight: bold;
+ text-decoration:underline;
+}
+
+
+
 div#all{
-    margin: 2px;
-    border: 1px solid #000;
+    margin: 5px;
+    padding: 5px;
+    border: 0px solid #000;
     background-color: #fff;
     text-align:     left;
 }
@@ -100,9 +111,9 @@ p, form{
 }
 
 table {
-    border-collapse: collapse;
-    border:1px solid black;
     text-align: center;
+    margin: 5px;
+    padding: 5px;
 }
 
 td,  tr, th {

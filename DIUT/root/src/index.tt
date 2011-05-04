@@ -1,4 +1,4 @@
 [% INCLUDE "personas/menu.tt" %]
 <div id="contenido">
-
+<input name="fecha" id="fecha" />
 </div>
