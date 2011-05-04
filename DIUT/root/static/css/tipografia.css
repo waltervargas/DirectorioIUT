@@ -1,0 +1,38 @@
+/* 
+Archivo: 	tipografia.css
+Autor: 		Walter Vargas <walter@covetel.com.ve>
+Descripción:  	Información general sobre tipografia de la aplicación. 
+*/
+
+html {
+font-size: 80%;
+}
+
+body {
+font-size: 1.2em ;
+font-family: FreeSans,sans-serif; 
+}
+
+h1 h2 h3 h4 {
+font-size: 1.5em;
+}
+
+a:link, a:visited {
+color:#0066CC;
+}
+
+a, .nowrap {
+white-space:nowrap;
+}
+
+a {
+outline:medium none;
+}
+
+label {
+font-weight: bold;
+}
+
+div#reporte_tabs {
+ font-size: 0.9em;
+}

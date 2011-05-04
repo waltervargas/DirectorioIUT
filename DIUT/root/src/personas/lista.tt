@@ -1,21 +1,21 @@
-[% INCLUDE "personas/menu.tt" %]
-<div id ="titulo">Lista de Personas</div>
+<p> 
+ <a class="enlace" href="/personas/crear" alt="Crear Persona"> Crear una nueva
+ Persona </a>
+</p>
+
+
 <div id="contenido">
-    <table>
+    <table id="lista_personas" class="dataTable" width="100%">
         <thead> 
-            <th> Identificador </th> 
-            <th> Nombre y Apellido </th> 
-            <th> Detalle </th> 
-            <th> Eliminar </th>
+           <tr>
+            <th> Nombre </th> 
+            <th> Apellido </th> 
+            <th> Cedula </th> 
+            <th> Correo </th>
+           </tr>
         </thead>
-        [% FOREACH persona IN personas %]
-            <tr>
-                <td> [% persona.uid %] </td>
-                <td> [% persona.firstname %] [% persona.lastname %] </td>
-                <td> <a href="/personas/detalle/[% persona.uid %]"> Detalle </a></td>
-                <td> <a href="/personas/eliminar/[% persona.uid %]"> Eliminar </a></td>
-                </td>
-            </tr>
-        [% END %]
+        <tbody>
+
+        </tbody>
     </table>
 </div>

@@ -1,0 +1,197 @@
+/* 
+Archivo:        formularios.css
+Autor:          Walter Vargas <walter@covetel.com.ve>
+Descripción:    Controla los elementos involucrados en los formularios
+*/
+
+form {
+margin: 0;
+padding: 0;
+width: 600px;
+
+}
+
+label {
+font-weight: bold;
+width:5em; /* Set a width so the inputs line up */
+vertical-align: middle;
+font-size: 0.8em;
+}
+
+fieldset {
+border:1px solid #dedede; /* Default fieldset borders vary cross browser, so make them the same */
+width: 430px;
+background-color: #eaeaea;
+border-top: 40px solid #eaeaea;
+margin-bottom: 10px;
+padding: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px; 
+padding-top: 20px;
+}
+
+legend {
+position: relative; 
+left: -1px;
+top: 0.25em;
+font-size: 1.4em;
+font-weight: bold;
+}
+
+div.text, div.label  {
+text-align: right;
+border-bottom: 1px solid #d4d4d4;
+padding-bottom: 7px;
+padding-top: 6px;
+}
+
+textarea {
+height: 50px;
+width: 250px;
+border: 2px solid #a6a6a6;
+}
+
+textarea.textarea_focus {
+height: 50px;
+width: 250px;
+border: 2px solid #88c1f0;
+}
+
+input.input_text {
+width: 250px;
+text-align: left;
+height: 25px;
+border: 2px solid #a6a6a6;
+-moz-border-radius: 7px;
+border-radius: 7px; 
+}
+
+input.input_text_focus {
+width: 250px;
+text-align: left;
+height: 25px;
+border: 2px solid #88c1f0;
+-moz-border-radius: 7px;
+border-radius: 7px; 
+}
+
+div.informacion {
+margin-top: -25px;
+padding-bottom: 5px;
+border-bottom: 1px solid #d4d4d4;
+padding-left: 2px;
+}
+
+label, input, textarea {
+vertical-align: middle;
+}
+
+div.submit, div.multi {
+width: 450px;
+text-align: right;
+}
+
+input.input_submit {
+background-color: #666666;
+border: 1px solid #666666;
+padding: 5px;
+padding-right: 10px;
+padding-left: 10px;
+color: #fff;
+font-weight: bold;
+cursor: pointer;
+margin-left: 5px;
+font-size: 0.8em;
+-moz-border-radius: 7px;
+border-radius: 7px; 
+}
+
+input.input_reset {
+background-color: #aaa;
+border: 1px solid #aaa;
+padding: 4px;
+padding-right: 5px;
+padding-left: 5px;
+color: #fff;
+font-weight: bold;
+cursor: pointer;
+margin-left: 5px;
+font-size: 0.8em;
+-moz-border-radius: 7px;
+border-radius: 7px; 
+}
+
+div.mensaje {
+width: 445px; 
+}
+
+span.ui-icon,span.ui-icon-info {
+float: left;
+margin-right: .3em;
+}
+
+div.error {
+background-color: #F3D8D8;
+background-image: url("images/ui-bg_diagonals-medium_20_f3d8d8_40x40.png");
+background-attachment: scroll;
+background-position:50% 50%;
+background-repeat:repeat;
+}
+
+span.error_message {
+float: left; 
+}
+
+span#icon {
+ float: right;
+ margin-top: -40px;
+ margin-left: 5px;
+}
+span.mensajito {
+ float: left;
+}
+
+div.clear {
+clear: both;
+height: 0px;
+}
+
+div.error_disposicion, div.mensaje_disposicion {
+ display: none;
+ width: 450px;
+}
+
+div#nav {
+ margin-bottom: 10px;
+}
+
+span.strong {
+ font-weight: bold;
+}
+
+span.important {
+ font-weight: bold;
+ color: #f00;
+}
+
+select.input_select {
+ width: 250px;
+ text-align: left;
+ height: 30px;
+ border: 2px solid #a6a6a6;
+ padding: 5px;
+ background-color: #fff;
+}
+
+/* Para los campos obligatorios */
+div.requerido {
+ font-size: 0.6em;
+ color: #f00;
+ font-weight: bold;
+}
+
+span.requerido {
+ font-size: 1.5em;
+ color: #f00;
+ font-weight: bold;
+}

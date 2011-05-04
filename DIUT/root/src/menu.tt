@@ -3,7 +3,7 @@
         <a href="/">Inicio</a>
     </span>
     <span>
-        <a href="/personas">Personas</a>
+        <a href="/personas/lista">Personas</a>
     </span>
     <span>
         <a href="/grupos/lista"> Grupos</a>

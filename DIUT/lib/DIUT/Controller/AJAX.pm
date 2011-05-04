@@ -33,15 +33,36 @@ sub index :Path :Args(0) {
 
 sub grupos : Local : ActionClass('REST') {}
 
+sub personas : Local : ActionClass('REST') {}
+
 sub grupos_GET {
 	my ($self, $c) = @_;
     my %datos; 
 
     $datos{aaData} = [
-        [ "profesores",  "Grupo de Profesores" ],
-        [ "Estudiantes", "Grupo de estudiantes" ]
+        map { [ "profesores $_",  "Grupo de Profesores $_" ] } 1..100000, 
     ];
 
+	$self->status_ok($c, entity => \%datos);
+}
+
+sub personas_GET {
+    my ( $self, $c ) = @_;
+    
+    my %datos; 
+    
+    $datos{aaData} = [
+        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
+        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
+        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
+        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
+        [ "Walter",  "Vargas", "16612574", 'walter@covetel.com.ve' ],
+        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+        [ "Luis",  "Da silva", "12123213", 'ldasilva@covetel.com.ve' ],
+    ];
 	$self->status_ok($c, entity => \%datos);
 }
 

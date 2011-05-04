@@ -114,30 +114,32 @@ table {
     text-align: center;
     margin: 5px;
     padding: 5px;
+    font-size: 0.9em;
 }
 
-td,  tr, th {
+tr, th {
+    padding: 2px;
+}
+
+td {
     padding: 5px;
-    border-spacing: 5px;
 }
 
 div#menu span {
     padding: 5px;   
 }
 
-div#sombraredondeada{
-		margin-left: 350px;
-        margin-top: -150px;
-        margin-bottom: 150px;
-        text-align: center;
-        background-color: #D8D8D8;
-		color: #000;
-		width: 400px;
-		padding: 10px;
-		-moz-border-radius: 7px;
-		-webkit-border-radius: 7px;
-		
-		box-shadow: 15px -10px 3px #000;
-		-webkit-box-shadow: 15px -10px 3px #000;
-		-moz-box-shadow: 15px -10px 3px #000;
+tr.even {
+    background-color: rgba(165,215,251,0.5);
+}
+
+tr.fila-hover {
+    font-weight: bold;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+
+div.dataTables_length,  div.dataTables_info,  div.dataTables_filter {
+ font-size: 0.8em;
+
 }

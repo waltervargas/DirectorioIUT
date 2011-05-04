@@ -1,23 +1,5 @@
-[% INCLUDE "personas/menu.tt" %]
+<p> 
+ <a class="enlace" href="/personas/lista" alt="Listar Personas"> Volver a la lista
+ de Personas </a>
+</p>
 [% form %]
-
-
-
-
-
-
-<!-- <div id ="titulo">Crear Persona</div>
-<div id="contenido">
-    <form action="/personas/crear" method="POST">
-        <div class="form">UID:</div>
-        <div class="form"><input name="uid" type="text" /></div>
-        <div class="form">Nombres:</div>
-        <div class="form"><input name="nombres" type="text" /></div>
-        <div class="form">Apellidos:</div>
-        <div class="form"><input name="apellidos" type="text" /></div>
-        <br />
-        <br />
-        <input type="submit" value="Crear Persona" />
-        <input type="reset" value="Limpiar" />
-   </form>
-</div> -->

@@ -1,3 +1,6 @@
 [% titulo = 'Crear Grupo' %]
-[% INCLUDE "grupos/menu.tt" %]
+<p> 
+ <a class="enlace" href="/grupos/lista" alt="Listar de Grupos"> Volver a la lista
+ de Grupos </a>
+</p>
 [% form %]
