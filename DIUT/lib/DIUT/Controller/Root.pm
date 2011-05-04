@@ -2,7 +2,7 @@ package DIUT::Controller::Root;
 use Moose;
 use namespace::autoclean;
 
-BEGIN { extends 'Catalyst::Controller' }
+BEGIN { extends 'Catalyst::Controller::HTML::FormFu' }
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -33,6 +33,19 @@ sub index :Path :Args(0) {
     $c->stash->{nombre} = "Dino ";
     $c->stash->{apellido} = "Carrillo de Carrero ";
 
+}
+
+
+sub login : Local : FormConfig {
+
+    my ( $self, $c ) = @_;
+    
+    $c->log->debug($c->encoding->name);
+
+    if ($c->req->method eq 'POST'){
+	    my $login   = $c->req->param("login");
+	    my $passw   = $c->req->param("passw");
+	}
 }
 
 =head2 default

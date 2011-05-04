@@ -1,0 +1,23 @@
+[% INCLUDE "personas/menu.tt" %]
+<div id ="titulo">Detalle Personas</div>
+<div id="contenido">
+    <div> Datos Personas
+    <br><span class="datos">Nombre: 
+    <span class="datos">Apellido: </span></br>
+    <br ><span class="datos">Direccion: </span>
+    <span class="datos">Telefono: </span></br>
+    </div>
+    <div id="foto">
+        Imagen
+    </div>
+    <div> Grupos (click para ver los grupos)
+        <table>
+           <tr>
+                <td> grupo </td>
+                <td> grupo2 </td>
+                <td> grupo3 </td>
+                <td> grupo4 </td>
+           </tr>
+        </table>
+    </div>
+</div>

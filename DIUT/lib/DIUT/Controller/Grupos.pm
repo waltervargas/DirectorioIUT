@@ -80,6 +80,11 @@ sub eliminar : Local {
 
 }
 
+sub apergroup : Local {
+    my ( $self, $c ) = @_;
+    $c->response->body();
+}
+
 =head1 AUTHOR
 
 ApHu,,,

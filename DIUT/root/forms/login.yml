@@ -1,0 +1,66 @@
+action: /login
+# indicator is the field that is used to test for form submission
+indicator: Botones.submit
+
+# Start listing the form elements
+#auto_fieldset: 1
+
+languages:
+    - es
+
+elements:
+    - type: Fieldset
+      name: datos_fieldset
+      legend: Ingreso al Sistema.
+      elements:
+        - type: Block
+          tag: div
+          content: 'Por favor ingrese sus datos'
+          attributes:
+              class: informacion
+
+        - type: Text
+          name: login
+          label: login
+          attributes:
+              title: 'Por favor ingrese el Login'
+              class: input_text
+              id: login
+          constraints:
+            - Required
+            - type: Length
+              min: 2
+              max: 250
+
+        - type: Password
+          name: passw
+          label: pass
+          attributes:
+              title: 'Por favor ingrese su Password'
+              class: input_text
+              id: descripcion
+          constraints:
+            - Required
+            - type: Length
+              min: 2
+              max: 250
+
+
+    # The Submit button
+    - type: Multi
+      name: Botones
+      elements:
+        - type: Submit
+          name: submit
+          # The text to be displayed
+          value: Ingresar
+          attributes:
+              title: Presione este botón para ingresar al sistemas.
+              class: input_submit
+              id: crear_usuario_submit
+
+
+filter:
+    # Filtrado de espacios en blanco y caracteres HTML
+    - TrimEdges
+    - HTMLEscape    

@@ -75,7 +75,7 @@ sub crear : Local : FormConfig {
     }
 }
 
-sub agregar : Local {
+sub personasdetalle : Local {
     my ( $self, $c ) = @_;
 }
 
