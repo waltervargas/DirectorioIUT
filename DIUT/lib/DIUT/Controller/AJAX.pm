@@ -35,6 +35,8 @@ sub grupos : Local : ActionClass('REST') {}
 
 sub personas : Local : ActionClass('REST') {}
 
+sub usuario_exists : Path('usuario/exists') Args(1) ActionClass('REST') {}
+
 sub grupos_GET {
 	my ($self, $c) = @_;
     my %datos; 
@@ -71,6 +73,23 @@ sub personas_GET {
     ];
 
 	$self->status_ok($c, entity => \%datos);
+}
+
+sub usuario_exists_GET {
+    my ( $self, $c, $uid ) = @_;
+    $c->log->debug($uid);
+    my $resp = {};
+
+
+    my $ldap = Covetel::LDAP->new;
+    if ($ldap->person({uid => $uid})){
+        $resp->{exists} = 1;
+    } else {
+        $resp->{exists} = 0;
+    }
+	
+    $self->status_ok($c, entity => $resp);
+
 }
 
 

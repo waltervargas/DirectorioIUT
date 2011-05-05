@@ -218,6 +218,17 @@ sub delete_ou {
 	}
 }
 
+sub error_str {
+	my $self = shift; 
+	my $mesg = $self->message;
+    my $str = "Error". $mesg->mesg_id;
+    $str .= $mesg->error_desc();
+    $str .= $mesg->error();
+    $str .= $mesg->error_text();
+    $str .= $mesg->server_error();
+    return $str;
+}
+
 sub print_error {
 	my $self = shift; 
 	my $mesg = $self->message;

@@ -4,6 +4,8 @@
  Detalle Grupo </a>
 </p>
 
+[% INCLUDE "mensajes.tt" %]
+
 <div id="contenido">
     <table id="lista_grupos" class="dataTable" width="100%">
         <thead> 

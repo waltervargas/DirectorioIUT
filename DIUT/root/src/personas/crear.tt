@@ -2,4 +2,10 @@
  <a class="enlace" href="/personas/lista" alt="Listar Personas"> Volver a la lista
  de Personas </a>
 </p>
-[% form %]
+[% INCLUDE "mensajes.tt" %]
+[% IF ! sucess %]
+    [% form %]
+[% ELSE %]
+ <a class="enlace" href="/personas/crear" alt="Crear una Persona">Para ingresar
+ otra persona haga click aquí </a>
+[% END %]

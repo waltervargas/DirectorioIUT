@@ -23,7 +23,7 @@ elements:
           name: nombre
           label: Nombre
           attributes:
-              title: 'Por favor ingrese el primer nombre del usuario'
+              title: 'Por favor ingrese el primer nombre de la persona'
               class: input_text
               id: nombre
           constraints:
@@ -36,7 +36,7 @@ elements:
           name: apellido
           label: Apellido
           attributes:
-              title: 'Por favor ingrese el primer apellido del usuario'
+              title: 'Por favor ingrese el primer apellido de la persona'
               class: input_text
               id: apellido
           constraints:
@@ -44,12 +44,13 @@ elements:
             - type: Length
               min: 2
               max: 250
+        
 
         - type: Text
           name: uid
           label: Identificador
           attributes:
-              title: 'Por favor ingrese el identificador del usuario'
+              title: 'Por favor ingrese el identificador de la persona'
               class: input_text
               id: uid
           constraints:
@@ -59,10 +60,21 @@ elements:
               max: 250
 
         - type: Text
+          name: ced
+          label: Cédula de Identidad
+          attributes:
+              title: 'Por favor ingrese la cedula de la persona'
+              class: input_text
+              id: ced
+          constraints:
+            - Required
+          validator: 'Cedula'
+
+        - type: Text
           name: mail
           label: Correo Electrónico
           attributes:
-              title: 'Por favor ingrese el Correo Electrónico del usuario'
+              title: 'Por favor ingrese el Correo Electrónico de la persona'
               class: input_text
               id: mail
           constraints:

@@ -58,24 +58,42 @@ sub crear : Local : FormConfig {
 	# Clases para los campos requeridos. 
     my $form = $c->stash->{form};
 	$form->auto_constraint_class( 'constraint_%t' );
-
-    $c->log->debug($c->encoding->name);
-
-    if ($c->req->method eq 'POST'){
+    
+    if ( $form->submitted_and_valid ) {
 	    my $uid         = $c->req->param("uid");
-	    my $firstname   = $c->req->param("nombres");
-	    my $lastname    = $c->req->param("apellidos");
+	    my $firstname   = $c->req->param("nombre");
+	    my $lastname    = $c->req->param("apellido");
+	    my $email       = $c->req->param("mail");
+	    my $password    = $c->req->param("passwd");
+	    my $ced         = $c->req->param("ced");
 
 	    my $person = Covetel::LDAP::Person->new({ 
 			uid => $uid,  
 			firstname => $firstname, 
 			lastname => $lastname,
+            ced => $ced, 
+            email => $email, 
 		});
+
+        $person->password($password);    
+
 	    my $dn = $person->dn();
-	    if ($person->add){
-	        $c->res->body("La persona ha sido creada exitosamente $dn
-            <a href='/personas/crear/'> Volver </a>");
-	    }
+
+        if ($person->add){
+            $c->stash->{mensaje} = "La persona $firstname $lastname ha sido
+            ingresada exitosamente";
+            $c->stash->{sucess} = 1;
+	    } else {
+            $c->stash->{error} = 1;
+            $c->stash->{mensaje} = "<strong> Error Crítico en LDAP:</strong>". $person->ldap->error_str();
+        }
+	} elsif ($form->has_errors && $form->submitted) {
+        # Obtengo el campo que fallo
+        my @err_fields = $form->has_errors;
+		my $label = $form->get_field($err_fields[0])->label; 
+
+        $c->stash->{error} = 1;
+        $c->stash->{mensaje} = "Ha ocurrido un error en el campo <span class='strong'> $label </span> ";
     }
 }
 
