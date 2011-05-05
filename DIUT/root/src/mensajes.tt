@@ -1,0 +1,27 @@
+[% BLOCK msj %]
+<div class="mensaje">
+	<div class="ui-widget">
+		 <div class="ui-state-highlight ui-corner-all">
+			 <p><span class="ui-icon ui-icon-info">&nbsp;</span>
+			 <strong> Mensaje:  </strong> [% mensaje %]</p>
+		</div>
+	</div> 
+</div>
+[% END%]
+
+[% BLOCK error %]
+<div class="mensaje">
+	<div class="ui-widget">
+		 <div class="ui-state-error ui-corner-all" >
+			 <p><span class="ui-icon ui-icon-info">&nbsp;</span>
+			 <strong> Error:  </strong> [% mensaje %]</p>
+		</div>
+	</div> 
+</div>
+[% END%]
+
+[% IF error %]
+	[% PROCESS error %]
+[% ELSIF mensaje %]
+	[% PROCESS msj %]
+[% END%] 

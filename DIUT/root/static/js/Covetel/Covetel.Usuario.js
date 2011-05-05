@@ -70,23 +70,12 @@ function element_error(element,msj){
 
 var usersTable = null;
 
-if (!usuario){
-	var usuario = new Covetel_usuario();
-}
+//if (!usuario){
+	//var usuario = new Covetel_usuario();
+//}
 
 $(document).ready(function(){
 	
-
-	// Creo el fieldset Entidad Verificadora si el rol es Auditor o AuditorJefe	
-	$("#rol").change(function(){
-		var rol = $("#rol :selected").val();
-		if (rol == 'auditor' || rol == 'auditorJefe') {
-			$("#fielset_entidad_verificadora").show();	
-			$("#idev").parent().campo_requerido();
-		} else if (rol == 'administrador'){
-			$("#fielset_entidad_verificadora").hide();	
-		}
-	});
 
 	// Autocreate del uid.
 	$("#apellido").blur(function(){
