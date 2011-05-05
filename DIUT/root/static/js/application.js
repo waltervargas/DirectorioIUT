@@ -20,7 +20,7 @@ $(document).ready(function(){
         }
     });
 
-    tabla3 = $("#lista_miembros_grupo").dataTable({
+    tabla3 = $("#lista_detalle_persona").dataTable({
 		"sAjaxSource": '/ajax/miembros_grupo',
 		"bJQueryUI": true,
 	    "fnDrawCallback": function () {
@@ -28,8 +28,10 @@ $(document).ready(function(){
         }
     });
 
-    tabla4 = $("#lista_grupos_persona").dataTable({
-		"sAjaxSource": '/ajax/grupos_persona',
+    var gidNumber = $("span.gidNumber").html();
+    
+    tabla4 = $("#lista_miembros_grupo").dataTable({
+		"sAjaxSource": '/ajax/groupmembers/'+gidNumber,
 		"bJQueryUI": true,
 	    "fnDrawCallback": function () {
             my_hover();

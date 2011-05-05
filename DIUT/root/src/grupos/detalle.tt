@@ -7,7 +7,7 @@
 <div id="contenido">
 <form method="post" action="/grupos/detalle">
     <fieldset>
-        <legend>[% grupo.nombre %]</legend>
+        <legend>[% grupo.nombre %] (<span class="gidNumber">[% grupo.gidNumber %]</span>)</legend>
         <div class="informacion">[% grupo.description %]</div><br />
         <div class="informacionsmall">En el siguiente campo introduzca los UID de
         las personas que desea agregar a este grupo,  separados por coma.</div>
@@ -23,11 +23,14 @@
     </fieldset>
 </form>
 
-    <table id="lista_miembros_grupo">
+    <table id="lista_miembros_grupo" width="100%">
         <thead> 
             <tr>
                 <th> Nombre </th> 
-                <th> Apellido </th> 
+                <th> Apellido </th>
+                <th> Cedula </th>
+                <th> Correo </th>
+                <th> UidNumber </th>
                 <th> Uid </th>
             </tr>
         </thead>

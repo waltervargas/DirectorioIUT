@@ -35,6 +35,8 @@ sub grupos : Local : ActionClass('REST') {}
 
 sub personas : Local : ActionClass('REST') {}
 
+sub groupmembers : Local : ActionClass('REST') {}
+
 sub usuario_exists : Path('usuario/exists') Args(1) ActionClass('REST') {}
 
 sub grupos_GET {
@@ -90,6 +92,44 @@ sub usuario_exists_GET {
 	
     $self->status_ok($c, entity => $resp);
 
+}
+
+sub groupmembers_GET {
+    my ($self, $c, $gid) = @_;
+    my %datos; 
+    my @person;
+    
+    my $ldap = Covetel::LDAP->new;
+    my $grupo = $ldap->group({gidNumber => $gid});
+
+    if ($grupo) {
+        my $members = $grupo->members;
+        use Data::Dumper;
+        $c->log->debug(Dumper($members));
+        foreach (@{$members}) {
+            $c->log->debug($_);
+            my $p = $ldap->person({uid => $_});
+            if ($p) {
+                push @person,  $p;
+            }
+        }
+    }
+   
+
+    $datos{aaData} = [
+        map {
+            [ 
+            $_->firstname, 
+            $_->lastname, 
+            $_->ced, 
+            $_->email,  
+            $_->uidNumber, 
+            $_->uid, 
+            ]
+        } @person, 
+    ];
+
+	$self->status_ok($c, entity => \%datos);
 }
 
 
