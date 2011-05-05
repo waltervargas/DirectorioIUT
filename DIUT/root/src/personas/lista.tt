@@ -1,6 +1,8 @@
 <p> 
  <a class="enlace" href="/personas/crear" alt="Crear Persona"> Crear una nueva
  Persona </a>
+ <a class="enlace" href="/personas/detalle" alt="Detalle Personas">
+ Detalle Personas </a>
 </p>
 
 

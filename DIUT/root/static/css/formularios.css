@@ -82,6 +82,14 @@ border-bottom: 1px solid #d4d4d4;
 padding-left: 2px;
 }
 
+div.informacionsmall {
+margin-top: -25px;
+padding-bottom: 5px;
+border-bottom: 1px solid #d4d4d4;
+padding-left: 2px;
+font-size: 0.8em;
+}
+
 label, input, textarea {
 vertical-align: middle;
 }

@@ -21,7 +21,7 @@ elements:
 
         - type: Text
           name: login
-          label: login
+          label: Login 
           attributes:
               title: 'Por favor ingrese el Login'
               class: input_text
@@ -34,7 +34,7 @@ elements:
 
         - type: Password
           name: passw
-          label: pass
+          label: Password
           attributes:
               title: 'Por favor ingrese su Password'
               class: input_text

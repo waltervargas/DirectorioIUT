@@ -79,8 +79,11 @@ sub crear : Local : FormConfig {
     }
 }
 
-sub personasdetalle : Local {
-    my ( $self, $c ) = @_;
+sub detalle : Local {
+    my ( $self, $c, $uid ) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my $person = $ldap->person({uid => $uid});
+    $c->stash->{persona} = $person;
 }
 
 =head1 AUTHOR

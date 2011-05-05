@@ -84,9 +84,16 @@ sub eliminar : Local {
 
 }
 
-sub apergroup : Local {
-    my ( $self, $c ) = @_;
-    $c->response->body();
+sub detalle : Local {
+    my ( $self, $c, $gid) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my $grupo = $ldap->group({gidNumber => $gid});
+    
+    if($grupo) {
+        $c->stash->{grupo} = $grupo;
+    }else{
+        $c->res->body('No se encuentra el Grupo')
+    }
 }
 
 =head1 AUTHOR

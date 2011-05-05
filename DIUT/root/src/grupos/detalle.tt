@@ -1,0 +1,37 @@
+<p> 
+ <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
+ <a class="enlace" href="/grupos/lista" alt="Lista Grupos">
+ Listar Grupos </a>
+</p>
+
+<div id="contenido">
+<form method="post" action="/grupos/detalle">
+    <fieldset>
+        <legend>[% grupo.nombre %]</legend>
+        <div class="informacion">[% grupo.description %]</div><br />
+        <div class="informacionsmall">En el siguiente campo introduzca los UID de
+        las personas que desea agregar a este grupo,  separados por coma.</div>
+        <div class="text label constraint_required constraint_length">
+            <label for="personas">Personas a Agregar</label>
+            <textarea id="personas" title="Ingrese la personas a agregar" name="personas"></textarea>
+        </div>
+        <div class="multi">
+            <span class="elements">
+                <input id="agregar_person" class="input_submit" type="submit" title="Presione para agregar las personas." value="Agregar Pesonas" name="Botones.submit" />
+            </span>
+        </div>
+    </fieldset>
+</form>
+
+    <table id="lista_miembros_grupo">
+        <thead> 
+            <tr>
+                <th> Nombre </th> 
+                <th> Apellido </th> 
+                <th> Uid </th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>

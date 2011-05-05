@@ -143,3 +143,21 @@ div.dataTables_length,  div.dataTables_info,  div.dataTables_filter {
  font-size: 0.8em;
 
 }
+
+
+div#datos {
+    margin-left: 3px; x
+}
+
+span.datos {
+    float: left;
+    margin-left: 5px;
+}
+
+div#foto {
+margin-top: -100px;
+margin-left: 300px;
+width: 100px;
+height: 100px;
+text-align: center;
+}

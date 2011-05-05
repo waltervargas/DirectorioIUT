@@ -1,5 +1,7 @@
 <p> 
  <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
+ <a class="enlace" href="/grupos/detalle" alt="Detalle Grupo">
+ Detalle Grupo </a>
 </p>
 
 <div id="contenido">

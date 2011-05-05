@@ -1,0 +1,41 @@
+<p> 
+ <a class="enlace" href="/personas/crear" alt="Crear Persona"> Crear una nueva
+ Persona </a>
+ <a class="enlace" href="/personas/lista" alt="Lista Personas">
+ Listar Personas </a>
+</p>
+
+
+<div id="contenido">
+    <form method="post" action="/personas/detalle">
+       <h2>[% persona.firstname %] [% persona.lastname %]</h2>
+            <div class="informacion">Los siguientes son datos de la persona:</div>
+                <div id="datos">
+                    <ul>
+                        <li><span class="datos">Nombre: </span>
+                        <span class="datos">[% persona.firstname %] </span></li>
+                        <li><span class="datos">Apellido: </span>
+                        <span class="datos">[% persona.lastname %]</span></li>
+                        <li><span class="datos">Cedula: </span>
+                        <span class="datos">[% persona.ced %]</span></li>           
+                        <li><span class="datos">Correo: </span>
+                        <span class="datos">[% persona.email %]</span></li>
+                    </ul>                    
+                    <div id="foto">
+                    Imagen
+                    </div>
+                    <button class="input_submit" type="button"> Editar </button>
+                </div>
+    </form>
+    
+    <table id="lista_grupos_persona">
+        <thead> 
+            <tr>
+                <th> Grupos </th> 
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+</div>
