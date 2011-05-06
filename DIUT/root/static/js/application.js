@@ -60,6 +60,7 @@ $(document).ready(function(){
 				contentType: 'application/json',
 			    processData: false,
 				complete: function (data) {
+                    $("div#mensaje").html("Las personas fueron agregadas al grupo exitosamente");
                     $("#personas").val('');
                     $( "#mensaje" ).dialog({ buttons: { "Ok": function() { $(this).dialog("close"); } } });
                     tabla4.fnReloadAjax();

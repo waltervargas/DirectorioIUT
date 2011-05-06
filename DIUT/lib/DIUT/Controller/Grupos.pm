@@ -37,7 +37,7 @@ sub crear : Local  : FormConfig {
     my $form = $c->stash->{form};
 	$form->auto_constraint_class( 'constraint_%t' );
     
-    if ($c->req->method eq 'POST'){
+    if ( $form->submitted_and_valid ) {
 	    my $grupo       = $c->req->param("nombre");
 	    my $descripcion = $c->req->param("descripcion");
 
@@ -45,18 +45,26 @@ sub crear : Local  : FormConfig {
         my $ldap = Covetel::LDAP->new;
         my $group = Covetel::LDAP::Group->new({ 
             nombre => $grupo, 
-            descripcion => $descripcion, 
+            description => $descripcion, 
 		    ldap => $ldap 
 	    });
 
         $c->log->debug($group->dn());
 
         if ($group->add()){
-	        $c->res->body("El grupo $grupo ha sido creado exitosamente 
-            <a href='/grupos/crear/'> Volver </a>");
+            $c->stash->{mensaje} = "El grupo $grupo ha sido
+            agregado exitosamente";
+            $c->stash->{sucess} = 1;
 	    }else{
-            $c->res->body("El nombre del grupo: $grupo y la descripcion: $descripcion, No se creo el grupo");
+            $c->stash->{error} = 1;
+            $c->stash->{mensaje} = "<strong> Error Crítico en LDAP:</strong>".$group->ldap->error_str();
         }
+	} elsif ($form->has_errors && $form->submitted) {
+        my @err_fields = $form->has_errors;
+		my $label = $form->get_field($err_fields[0])->label; 
+
+        $c->stash->{error} = 1;
+        $c->stash->{mensaje} = "Ha ocurrido un error en el campo <span class='strong'> $label </span> ";
     }
 }
 

@@ -3,4 +3,10 @@
  <a class="enlace" href="/grupos/lista" alt="Listar de Grupos"> Volver a la lista
  de Grupos </a>
 </p>
-[% form %]
+[% INCLUDE "mensajes.tt" %]
+[% IF ! sucess %]
+    [% form %]
+[% ELSE %]
+ <a class="enlace" href="/grupos/crear" alt="Crear un Grupo">Para ingresar
+ otro grupo haga click aquí </a>
+[% END %]
