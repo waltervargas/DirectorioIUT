@@ -1,8 +1,6 @@
 <p> 
  <a class="enlace" href="/personas/crear" alt="Crear Persona"> Crear una nueva
  Persona </a>
- <a class="enlace" href="/personas/detalle" alt="Detalle Personas">
- Detalle Personas </a>
 </p>
 
 
@@ -10,6 +8,7 @@
     <table id="lista_personas" class="dataTable" width="100%">
         <thead> 
            <tr>
+            <th> &nbsp; </th> 
             <th> Nombre </th> 
             <th> Apellido </th> 
             <th> Cedula </th> 
@@ -22,5 +21,13 @@
         <tbody>
 
         </tbody>
+        <tfoot>
+            <tr>
+                <td class="left" colspan="8"> 
+                    <button id="remove_person"> Eliminar </button>  
+                    <button id="select_all"> Marcar Todos </button>  
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

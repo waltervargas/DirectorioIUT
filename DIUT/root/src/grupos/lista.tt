@@ -8,6 +8,7 @@
     <table id="lista_grupos" class="dataTable" width="100%">
         <thead> 
             <tr>
+                <th> &nbsp; </th>
                 <th> GID </th> 
                 <th> Nombre del Grupo </th> 
                 <th> Descripción </th> 
@@ -16,5 +17,13 @@
         </thead>
         <tbody>
         </tbody>
+        <tfoot>
+            <tr>
+                <td class="left" colspan="8"> 
+                    <button id="select_all"> Marcar Todos </button>  
+                    <button id="remove_group"> Eliminar </button>  
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

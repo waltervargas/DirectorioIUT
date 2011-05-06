@@ -1,0 +1,6 @@
+[% INCLUDE "mensajes.tt" %]
+
+<p>
+ <a href="/personas/lista" alt="Lista de personas"> Volver a la lista de
+ personas </a>
+</p>

@@ -76,20 +76,17 @@ sub lista : Local {
 }
 
 sub eliminar : Local {
-    my ( $self, $c, $cn) = @_;
+    my ( $self, $c, $gid) = @_;
     my $ldap = Covetel::LDAP->new;
-    my @grupos = $ldap->group();
-
-    foreach my $grupo (@grupos){
-        $c->log->debug($grupo->entry->get_value('cn'));
-        if ($grupo->entry->get_value('cn') eq $cn){
-            if($grupo->del()){
-                $c->res->body("Fue eliminado satisfactoriamente el grupo $cn  <a
-                href='/grupos/lista'> Volver </a>");
-            }
-        } 
+    my $grupo = $ldap->group({gidNumber => $gid});
+    if ($grupo){
+        if($grupo->del()){
+            $c->stash->{mensaje} = "El grupo ".$grupo->nombre." ha sido eliminado exitosamente";
+        }
+    } else {
+            $c->stash->{error} = 1;
+            $c->stash->{mensaje} = "No se encontro el grupo";
     }
-
 }
 
 sub detalle : Local {
@@ -98,6 +95,15 @@ sub detalle : Local {
     my $grupo = $ldap->group({gidNumber => $gid});
     
     if($grupo) {
+        my $nombre = $grupo->nombre();
+        my $desc = $grupo->description();
+
+        utf8::decode($nombre);
+        utf8::decode($desc); 
+
+        $grupo->nombre($nombre);
+        $grupo->description($desc);
+
         $c->stash->{grupo} = $grupo;
     }else{
         $c->res->body('No se encuentra el Grupo')

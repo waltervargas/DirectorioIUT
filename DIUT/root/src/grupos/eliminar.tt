@@ -1,0 +1,5 @@
+[% INCLUDE "mensajes.tt" %]
+
+<p>
+ <a href="/grupos/lista" alt="Lista de grupos"> Volver a la lista de grupos </a>
+</p>

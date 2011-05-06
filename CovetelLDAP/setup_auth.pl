@@ -28,14 +28,12 @@ my $ldap = Covetel::LDAP->new;
 
 
 my $g = $ldap->group({gidNumber => 1005});
-
 print Dumper $g->members;
-
 $g->add_member('lramirez');
+$g->update;
 
 print Dumper $g->members;
 
-$g->update;
 
 #my $person = Covetel::LDAP::Person->new(
 #    { 

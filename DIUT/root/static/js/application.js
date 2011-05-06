@@ -5,10 +5,16 @@ var tabla4;
 var sel = true;
 
 $(document).ready(function(){
+    
+    $.ajaxSetup({ scriptCharset: "utf-8" , contentType: "application/json; charset=utf-8"});
+    
 
     tabla = $("#lista_grupos").dataTable({
 		"sAjaxSource": '/ajax/grupos',
 		"bJQueryUI": true,
+ 		"oLanguage": {
+            "sUrl": "/static/js/dataTables.spanish.txt"
+        },
 	    "fnDrawCallback": function () {
             my_hover();
         }
@@ -17,6 +23,9 @@ $(document).ready(function(){
     tabla2 = $("#lista_personas").dataTable({
 		"sAjaxSource": '/ajax/personas',
 		"bJQueryUI": true,
+ 		"oLanguage": {
+            "sUrl": "/static/js/dataTables.spanish.txt"
+        },
 	    "fnDrawCallback": function () {
             my_hover();
         }
@@ -24,6 +33,9 @@ $(document).ready(function(){
 
     tabla3 = $("#lista_detalle_persona").dataTable({
 		"sAjaxSource": '/ajax/miembros_grupo',
+ 		"oLanguage": {
+            "sUrl": "/static/js/dataTables.spanish.txt"
+        },
 		"bJQueryUI": true,
 	    "fnDrawCallback": function () {
             my_hover();
@@ -34,6 +46,9 @@ $(document).ready(function(){
     
     tabla4 = $("#lista_miembros_grupo").dataTable({
 		"sAjaxSource": '/ajax/groupmembers/'+gidNumber,
+ 		"oLanguage": {
+            "sUrl": "/static/js/dataTables.spanish.txt"
+        },
 		"bJQueryUI": true,
 	    "fnDrawCallback": function () {
             my_hover();
@@ -75,7 +90,7 @@ $(document).ready(function(){
         var jsoon = $.JSON.encode(datos);
 			$.ajax({
 				url: "/ajax/grupos/del", 
-				type: "PUT",
+				type: "DELETE",
                 data: jsoon, 
 				dataType: "json",
 				contentType: 'application/json',
@@ -104,5 +119,63 @@ $(document).ready(function(){
 
     $("button#select_all_off").click(function(){
         $("input:checkbox").attr('checked', false);
+    });
+
+    $("a.eliminar").click(function(){
+        return false;
+        $("div#all").append('<div id="mensaje"> </div>');
+        $("div#mensaje").html("Las personas fueron removidas del grupo exitosamente");
+        $( "#mensaje" ).dialog({ buttons: { "Ok": function() { $(this).dialog("close"); return false; } } });
+    
+    });
+
+    // Eliminar grupos
+    $("button#remove_group").click(function(){
+        var gids = $("input:checked").getCheckboxValues();
+        var datos = ({'gids': gids});
+        var jsoon = $.JSON.encode(datos);
+			$.ajax({
+				url: "/ajax/delete/groups", 
+				type: "DELETE",
+                data: jsoon, 
+				dataType: "json",
+				contentType: 'application/json; charset=utf-8',
+			    processData: false,
+				complete: function (data) {
+                    if (data.status == 200)
+                    {
+                        $("div#all").append('<div id="mensaje"> </div>');
+                        $("div#mensaje").html("Registros eliminados exitosamente");
+                        tabla.fnReloadAjax();
+                        $( "#mensaje" ).dialog({ buttons: { "Ok": function() { $(this).dialog("close"); } } });
+                    }
+                }
+	        }); // Fin de ajax
+
+    });
+
+
+    $("button#remove_person").click(function(){
+        var uids = $("input:checked").getCheckboxValues();
+        var datos = ({'uids': uids});
+        var jsoon = $.JSON.encode(datos);
+			$.ajax({
+				url: "/ajax/delete/persons", 
+				type: "DELETE",
+                data: jsoon, 
+				dataType: "json",
+				contentType: 'application/json; charset=utf-8',
+			    processData: false,
+				complete: function (data) {
+                    if (data.status == 200)
+                    {
+                        $("div#all").append('<div id="mensaje"> </div>');
+                        $("div#mensaje").html("Registros eliminados exitosamente");
+                        tabla2.fnReloadAjax();
+                        $( "#mensaje" ).dialog({ buttons: { "Ok": function() { $(this).dialog("close"); } } });
+                    }
+                }
+	        }); // Fin de ajax
+
     });
 });

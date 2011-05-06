@@ -43,11 +43,12 @@ sub eliminar : Local {
     my $person = $ldap->person({uid => $uid});
     if ($person){
         if($person->del()){
-            $c->res->body("La persona " . $person->firstname . " ha sido
-                borrada exitosamente <a href='/personas/lista'>Volver</a>");
+            $c->stash->{mensaje} = "El registro de la persona
+            ".$person->firstname." fue eliminado exitosamente";
         }
     } else {
-        $c->res->body("Uid no encontrado");
+            $c->stash->{error} = 1;
+            $c->stash->{mensaje} = "No se encontro la persona";
     }
     
 }

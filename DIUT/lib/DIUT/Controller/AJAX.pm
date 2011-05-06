@@ -3,9 +3,10 @@ use Moose;
 use namespace::autoclean;
 
 BEGIN {extends 'Catalyst::Controller::REST'; }
+use utf8;
 
 __PACKAGE__->config(
-  'default'   => 'text/javascript',
+  'default'   => 'application/json',
 );
 
 =head1 NAME
@@ -43,6 +44,16 @@ sub addMember : Path('grupos/add') Args ActionClass('REST') {}
 
 sub delMember : Path('grupos/del') Args ActionClass('REST') {}
 
+sub delete_groups : Path('delete/groups') Args ActionClass('REST') {}
+
+sub delete_persons : Path('delete/persons') Args ActionClass('REST') {}
+
+sub utf8_decode {
+    my ($str) = @_;
+    utf8::decode($str);
+    return $str;
+}
+
 sub grupos_GET {
 	my ($self, $c) = @_;
     my %datos; 
@@ -53,7 +64,9 @@ sub grupos_GET {
     $datos{aaData} = [
         map {
             [
-                $_->gidNumber, $_->nombre, $_->description, 
+
+                '<input type="checkbox" name="del" value="'.$_->gidNumber.'">', 
+                $_->gidNumber, &utf8_decode($_->nombre), &utf8_decode($_->description), 
                 '<a href="/grupos/detalle/' . $_->gidNumber . '"> Ver detalle </a>', 
             ]
           } @lista,
@@ -73,8 +86,9 @@ sub personas_GET {
     $datos{aaData} = [
         map {
             [ 
-            $_->firstname, 
-            $_->lastname, 
+            '<input type="checkbox" name="del" value="'.$_->uid.'">', 
+            &utf8_decode($_->firstname), 
+            &utf8_decode($_->lastname), 
             $_->ced, 
             $_->email,  
             $_->uidNumber, 
@@ -130,8 +144,8 @@ sub groupmembers_GET {
         map {
             [ 
             '<input type="checkbox" name="del" value="'.$_->uid.'">', 
-            $_->firstname, 
-            $_->lastname, 
+            &utf8_decode($_->firstname), 
+            &utf8_decode($_->lastname), 
             $_->ced, 
             $_->email,  
             $_->uidNumber, 
@@ -165,33 +179,69 @@ sub addMember_PUT {
     $self->status_ok($c, entity => \%datos);
 }
 
-sub delMember_PUT {
+sub delMember_DELETE {
     my ($self, $c) = @_;
     my $ldap = Covetel::LDAP->new;
-
     my %datos;
-    
     my $del = $c->req->data->{personas};
     my $gid = $c->req->data->{gid};
-
     my $g = $ldap->group({gidNumber => $gid});
-
     my $members = $g->members();
-
-    use Data::Dumper; 
-
-    $c->log->debug(Dumper($members));
-
     my $new_members;
     map { push @{$new_members} , $_ unless $_ ~~ @{$del} } @{$members};
-    
     $c->log->debug(Dumper($new_members));
-
     $g->members($new_members);
-
     $g->update;
-    
     $self->status_ok($c, entity => \%datos);
+}
+
+sub delete_groups_DELETE {
+    my ( $self, $c ) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my %resp;
+
+    my $gids = $c->req->data->{gids};
+
+    my $status = 1;
+
+    foreach (@{$gids}){
+        my $g = $ldap->group({gidNumber => $_});
+        if ($g){
+            unless($g->del()){
+                $self->status_bad_request(
+                    $c,
+                    message => "No fue posible eliminar el registro",
+                );
+            }
+        }
+    }
+
+    $resp{estatus} = $status;
+    $self->status_ok($c, entity => \%resp);
+    
+}
+
+sub delete_persons_DELETE {
+    my ( $self, $c ) = @_;
+    my $ldap = Covetel::LDAP->new;
+    my %resp;
+    my $uids = $c->req->data->{uids};
+    my $status = 1;
+
+    foreach (@{$uids}){
+        my $p = $ldap->person({uid => $_});
+        if ($p){
+            unless($p->del()){
+                $self->status_bad_request(
+                    $c,
+                    message => "No fue posible eliminar el registro",
+                );
+            }
+        }
+    }
+    
+    $resp{estatus} = $status;
+    $self->status_ok($c, entity => \%resp);
 }
 
 =head1 AUTHOR
