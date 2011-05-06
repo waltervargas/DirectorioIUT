@@ -1,6 +1,6 @@
 [% titulo = 'Crear Grupo' %]
 <p> 
- <a class="enlace" href="/grupos/lista" alt="Listar de Grupos"> Volver a la lista
+ <a class="enlace" href="/grupos/lista" title="Listar de Grupos"> Volver a la lista
  de Grupos </a>
 </p>
 [% INCLUDE "mensajes.tt" %]

@@ -1,5 +1,5 @@
 <p> 
- <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
+ <a class="enlace" href="/grupos/crear" title="Crear Grupos"> Crear un nuevo Grupo </a>
 </p>
 
 [% INCLUDE "mensajes.tt" %]
@@ -15,8 +15,6 @@
                 <th> Detalle </th> 
             </tr>
         </thead>
-        <tbody>
-        </tbody>
         <tfoot>
             <tr>
                 <td class="left" colspan="8"> 
@@ -25,5 +23,10 @@
                 </td>
             </tr>
         </tfoot>
+        <tbody>
+            <tr>
+            <td> &nbsp;</td>
+            </tr>
+        </tbody>
     </table>
 </div>

@@ -1,11 +1,11 @@
 <p> 
- <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
- <a class="enlace" href="/grupos/lista" alt="Lista Grupos">
+ <a class="enlace" href="/grupos/crear" title="Crear Grupos"> Crear un nuevo Grupo </a>
+ <a class="enlace" href="/grupos/lista" title="Lista Grupos">
  Listar Grupos </a>
 </p>
 
 <div id="contenido">
-    <form id="form_add_member" method="" action="#">
+    <form id="form_add_member" action="#">
     <fieldset>
         <legend>[% grupo.nombre %] (<span class="gidNumber">[% grupo.gidNumber %]</span>)</legend>
         <div class="informacion">[% grupo.description %]</div><br />
@@ -14,12 +14,13 @@
         las personas que desea agregar a este grupo,  separados por coma.</div>
         <div class="text label constraint_required constraint_length">
             <label for="personas">Personas a Agregar</label>
-            <textarea id="personas" title="Ingrese la personas a agregar" name="personas"></textarea>
+            <textarea cols="20" rows="10" id="personas" title="Ingrese la personas a agregar" name="personas">
+            </textarea>
         </div>
         <div class="multi">
-            <span class="elements">
-                <button id="add_member"> Agregar Personas al grupo </button>
-            </span>
+            <div class="elements">
+                <button id="add_member"> Agregar Personas al grupo </button> 
+            </div>
         </div>
     </fieldset>
     </form>
@@ -36,8 +37,6 @@
                 <th> Uid </th>
             </tr>
         </thead>
-        <tbody>
-        </tbody>
         <tfoot>
             <tr>
                 <td class="left" colspan="7"> 
@@ -46,6 +45,9 @@
                 </td>
             </tr>
         </tfoot>
+        <tbody>
+            <tr> <td> &nbsp; </td> </tr>
+        </tbody>
     </table>
 
     <div class="oculto" title="Operacion Exitosa" id="mensaje">

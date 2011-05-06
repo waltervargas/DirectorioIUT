@@ -1,5 +1,5 @@
 <p> 
- <a class="enlace" href="/personas/lista" alt="Listar Personas"> Volver a la lista
+ <a class="enlace" href="/personas/lista" title="Listar Personas"> Volver a la lista
  de Personas </a>
 </p>
 [% INCLUDE "mensajes.tt" %]
