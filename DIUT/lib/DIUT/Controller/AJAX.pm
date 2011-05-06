@@ -95,7 +95,7 @@ sub personas_GET {
             $_->uid, 
             '<a href="/personas/detalle/' . $_->uid . '"> Ver detalle </a>', 
             ]
-        } @lista, 
+        } grep { !($_->uid eq 'root') } @lista, 
     ];
 
 	$self->status_ok($c, entity => \%datos);
@@ -151,7 +151,7 @@ sub groupmembers_GET {
             $_->uidNumber, 
             $_->uid, 
             ]
-        } @person, 
+        } grep { !($_->uid eq 'root') } @person, 
     ];
 
 	$self->status_ok($c, entity => \%datos);

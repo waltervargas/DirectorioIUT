@@ -2,52 +2,49 @@
 use strict;
 use warnings;
 use Covetel::LDAP;
+use Covetel::LDAP::Person;
 use Covetel::LDAP::Group;
 use Data::Dumper;
 use utf8;
+use 5.010;
 
 my $ldap = Covetel::LDAP->new;
 
+unless ($ldap->person({uid => 'root'})){
+	my $person = Covetel::LDAP::Person->new(
+	    { 
+			uid => 'root', 
+			firstname => 'Root', 
+			lastname => 'Admin',
+            ced => '123456', 
+			ldap => $ldap, 
+		} 
+	);
+
+    $person->password("123321...");
+    if($person->add()) {
+        say "Usuario root creado.";
+    }
+} else {
+    say "El usuario root ya existe.";
+}
+
+
 ## Creamos el grupo de Administradores
-#my $group = Covetel::LDAP::Group->new(
-#    { 
-#        nombre => "Administradores", 
-#        descripcion => "Administradores de la Aplicación", 
-#		ldap => $ldap, 
-#        members => ["wvargas","cparedes","jdasilva"], 
-#	} 
-#);
-#
-#print Dumper $group->members;
-#
-#if ($group->add()){
-#	print "The group ".$group->dn." has been created ". $group->gidNumber() ."  \n";
-#} else {
-#	$group->ldap->print_error();
-#}
 
+unless($ldap->group({cn => 'Administradores'})){
+	my $group = Covetel::LDAP::Group->new(
+	    { 
+	        nombre => "Administradores", 
+	        description => "Administradores de la Aplicación", 
+			ldap => $ldap, 
+	        members => ["root"], 
+		} 
+	);
 
-my $g = $ldap->group({gidNumber => 1005});
-print Dumper $g->members;
-$g->add_member('lramirez');
-$g->update;
-
-print Dumper $g->members;
-
-
-#my $person = Covetel::LDAP::Person->new(
-#    { 
-#		uid => 'root', 
-#		firstname => 'Root', 
-#		lastname => 'Admin',
-#		ldap => $ldap 
-#	} 
-#);
-#
-#if ($group->add()){
-#	print "The group ".$group->dn." has been created ". $group->gidNumber() ."  \n";
-#} else {
-#	$group->ldap->print_error();
-#}
-
-
+    if($group->add()){
+        say "Grupo Administradores creado.";
+    }
+} else {
+    say "El grupo Administradores ya existe";
+}
