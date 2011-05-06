@@ -1,11 +1,11 @@
 <div class="menu" id="menu"> 
     <span>
-        <a href="/">Inicio</a>
-    </span>
-    <span>
         <a href="/personas/lista">Personas</a>
     </span>
     <span>
-        <a href="/grupos/lista"> Grupos</a>
+        <a href="/grupos/lista">Grupos</a>
+    </span>
+    <span>
+        <a href="/logout">Salir</a>
     </span>
 </div>

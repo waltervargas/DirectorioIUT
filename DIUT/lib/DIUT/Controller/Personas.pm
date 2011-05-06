@@ -26,7 +26,7 @@ Catalyst Controller.
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-    $c->response->body();
+    $c->response->redirect($c->uri_for('/personas/lista'));
 }
 
 sub lista : Local {

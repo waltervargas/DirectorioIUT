@@ -2,7 +2,7 @@ package DIUT::Controller::Root;
 use Moose;
 use namespace::autoclean;
 
-BEGIN { extends 'Catalyst::Controller::HTML::FormFu' }
+BEGIN { extends 'Catalyst::Controller' }
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -28,24 +28,7 @@ The root page (/)
 
 sub index :Path :Args(0) {
     my ( $self, $c ) = @_;
-
-    # Hello World
-    $c->stash->{nombre} = "Dino ";
-    $c->stash->{apellido} = "Carrillo de Carrero ";
-
-}
-
-
-sub login : Local : FormConfig {
-
-    my ( $self, $c ) = @_;
-    
-    $c->log->debug($c->encoding->name);
-
-    if ($c->req->method eq 'POST'){
-	    my $login   = $c->req->param("login");
-	    my $passw   = $c->req->param("passw");
-	}
+    $c->response->redirect($c->uri_for('/personas/lista'));
 }
 
 =head2 default
@@ -58,6 +41,25 @@ sub default :Path {
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
     $c->response->status(404);
+}
+
+sub auto : Private {
+
+    my ( $self, $c ) = @_;
+    if ($c->controller eq $c->controller('Login')){
+        return 1;
+    }
+
+    if (!$c->user_exists) {
+        $c->response->redirect($c->uri_for('/login'));
+        return 0;
+    } 
+
+	if (!$c->check_user_roles(qw/Administradores/)){
+        $c->response->redirect($c->uri_for('/login'));
+    }
+
+    return 1;
 }
 
 =head2 end

@@ -22,6 +22,10 @@ use Catalyst qw/
     Session
     Session::Store::FastMmap
     Session::State::Cookie
+
+    Authorization::Roles
+    Authorization::ACL
+    
     
 /;
 
@@ -45,27 +49,6 @@ __PACKAGE__->config(
     disable_component_resolution_regex_fallback => 1,
 );
 
-
-__PACKAGE__->config({
- 'Plugin::Authentication' => {
- default => {
-    credential => {
-        class => 'Password', 
-        password_field => 'password', 
-        password_type => 'clear', 
-    },  
-    store => {
-        class => 'Minimal', 
-        users => {
-            admin => {
-                password => "123321...",
-            },
-        }
-       
-    }   
- }
-}, 
-});
 
 __PACKAGE__->config(
     'Plugin::ConfigLoader' => { file => 'configuracion.yml' },

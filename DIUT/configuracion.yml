@@ -13,19 +13,6 @@ View::HTML:
     encoding: UTF-8
 
 
-
-# Configuración General LDAP. 
-Model::LDAP:
-   host: localhost
-   # Base de busqueda general
-   base: dc=iutai,dc=tec,dc=ve
-   # Usuario de LDAP.
-   dn: cn=admin,dc=iutai,dc=tec,dc=ve
-   password: 123321...
-   start_tls: 0
-   entry_class: CNTI1409::LDAP::Entrada
-   connection_class: CNTI1409::LDAP::Connection
-
 # Configuración del Módulo de Autenticación LDAP.
 authentication:
     default_realm: ldap
@@ -37,22 +24,22 @@ authentication:
                 password_type:  self_check
             store:
                 class: LDAP
-                ldap_server: 192.168.5.3
+                ldap_server: localhost
                 ldap_server_options:
                     timeout: 30
-                binddn: cn=admin,dc=cnti,dc=gob,dc=ve
+                binddn: cn=admin,dc=iutai,dc=tec,dc=ve
                 bindpw: 123321...
                 start_tls: 0
                 start_tls_options:
                     verify: none
-                user_basedn: ou=Usuarios,ou=cnti1409,dc=cnti,dc=gob,dc=ve
+                user_basedn: ou=Personas,dc=iutai,dc=tec,dc=ve
                 user_filter: (&(objectClass=posixAccount)(uid=%s))
                 user_scope: sub
                 user_field: uid
                 user_search_options:
                     deref: always
                 use_roles: 1
-                role_basedn: ou=Roles,ou=cnti1409,dc=cnti,dc=gob,dc=ve
+                role_basedn: ou=Grupos,dc=iutai,dc=tec,dc=ve
                 role_filter: (&(objectClass=posixGroup)(memberUid=%s))
                 role_scope: sub
                 role_field: cn
