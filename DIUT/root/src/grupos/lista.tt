@@ -1,7 +1,5 @@
 <p> 
  <a class="enlace" href="/grupos/crear" alt="Crear Grupos"> Crear un nuevo Grupo </a>
- <a class="enlace" href="/grupos/detalle" alt="Detalle Grupo">
- Detalle Grupo </a>
 </p>
 
 [% INCLUDE "mensajes.tt" %]
@@ -13,6 +11,7 @@
                 <th> GID </th> 
                 <th> Nombre del Grupo </th> 
                 <th> Descripción </th> 
+                <th> Detalle </th> 
             </tr>
         </thead>
         <tbody>

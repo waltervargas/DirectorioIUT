@@ -14,8 +14,9 @@
             <th> Apellido </th> 
             <th> Cedula </th> 
             <th> Correo </th>
-            <th> UID </th> 
             <th> NumberID </th> 
+            <th> UID </th> 
+            <th> Detalle </th>
            </tr>
         </thead>
         <tbody>

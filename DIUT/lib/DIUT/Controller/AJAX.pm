@@ -5,7 +5,7 @@ use namespace::autoclean;
 BEGIN {extends 'Catalyst::Controller::REST'; }
 
 __PACKAGE__->config(
-  'default'   => 'application/json',
+  'default'   => 'text/javascript',
 );
 
 =head1 NAME
@@ -39,6 +39,10 @@ sub groupmembers : Local : ActionClass('REST') {}
 
 sub usuario_exists : Path('usuario/exists') Args(1) ActionClass('REST') {}
 
+sub addMember : Path('grupos/add') Args ActionClass('REST') {}
+
+sub delMember : Path('grupos/del') Args ActionClass('REST') {}
+
 sub grupos_GET {
 	my ($self, $c) = @_;
     my %datos; 
@@ -47,7 +51,12 @@ sub grupos_GET {
     my @lista = $ldap->group();
 
     $datos{aaData} = [
-        map { [ $_->gidNumber, $_->nombre,  $_->description ] } @lista, 
+        map {
+            [
+                $_->gidNumber, $_->nombre, $_->description, 
+                '<a href="/grupos/detalle/' . $_->gidNumber . '"> Ver detalle </a>', 
+            ]
+          } @lista,
     ];
 
 	$self->status_ok($c, entity => \%datos);
@@ -70,6 +79,7 @@ sub personas_GET {
             $_->email,  
             $_->uidNumber, 
             $_->uid, 
+            '<a href="/personas/detalle/' . $_->uid . '"> Ver detalle </a>', 
             ]
         } @lista, 
     ];
@@ -119,6 +129,7 @@ sub groupmembers_GET {
     $datos{aaData} = [
         map {
             [ 
+            '<input type="checkbox" name="del" value="'.$_->uid.'">', 
             $_->firstname, 
             $_->lastname, 
             $_->ced, 
@@ -132,6 +143,56 @@ sub groupmembers_GET {
 	$self->status_ok($c, entity => \%datos);
 }
 
+
+sub addMember_PUT {
+    my ($self, $c) = @_;
+    my $ldap = Covetel::LDAP->new;
+
+    my $personas = $c->req->data->{personas};
+    my $gid = $c->req->data->{gid};
+    my $g = $ldap->group({gidNumber => $gid});
+    foreach (@{$personas}){
+        s/\s+//g;
+        if ($ldap->person({uid => $_})){
+            if ($g) {
+                $g->add_member($_);
+                $g->update;
+            }
+        }
+    }
+	my %datos;
+
+    $self->status_ok($c, entity => \%datos);
+}
+
+sub delMember_PUT {
+    my ($self, $c) = @_;
+    my $ldap = Covetel::LDAP->new;
+
+    my %datos;
+    
+    my $del = $c->req->data->{personas};
+    my $gid = $c->req->data->{gid};
+
+    my $g = $ldap->group({gidNumber => $gid});
+
+    my $members = $g->members();
+
+    use Data::Dumper; 
+
+    $c->log->debug(Dumper($members));
+
+    my $new_members;
+    map { push @{$new_members} , $_ unless $_ ~~ @{$del} } @{$members};
+    
+    $c->log->debug(Dumper($new_members));
+
+    $g->members($new_members);
+
+    $g->update;
+    
+    $self->status_ok($c, entity => \%datos);
+}
 
 =head1 AUTHOR
 

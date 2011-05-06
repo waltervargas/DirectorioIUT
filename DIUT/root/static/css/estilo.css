@@ -5,6 +5,10 @@ body {
     font-family: FreeSans, Verdana ,sans-serif; 
 }
 
+.oculto{
+    display: none;
+}
+
 a.enlace {
  color: #20c; 
  padding: 5px;
@@ -37,6 +41,17 @@ a {
     text-decoration: none;
 }
 
+.left {
+    text-align: left;
+}
+
+tfoot tr {
+    background-color: #ddd;
+}
+
+tfoot tr td {
+    padding: 10px;
+}
 
 .clear {
  clear: both; 
