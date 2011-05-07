@@ -9,6 +9,10 @@ body {
     display: none;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 a.enlace {
  color: #20c; 
  padding: 5px;
@@ -161,7 +165,7 @@ div.dataTables_length,  div.dataTables_info,  div.dataTables_filter {
 
 
 div#datos {
-    margin-left: 3px; x
+    margin-left: 3px;
 }
 
 span.datos {

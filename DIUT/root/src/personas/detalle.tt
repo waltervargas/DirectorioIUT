@@ -12,30 +12,19 @@
             <div class="informacion">Los siguientes son datos de la persona:</div>
                 <div id="datos">
                     <ul>
-                        <li><span class="datos">Nombre: </span>
+                        <li><span class="datos bold">Nombre: </span>
                         <span class="datos">[% persona.firstname %] </span></li>
-                        <li><span class="datos">Apellido: </span>
+                        <li><span class="datos bold">Apellido: </span>
                         <span class="datos">[% persona.lastname %]</span></li>
-                        <li><span class="datos">Cedula: </span>
+                        <li><span class="datos bold">Cédula: </span>
                         <span class="datos">[% persona.ced %]</span></li>           
-                        <li><span class="datos">Correo: </span>
+                        <li><span class="datos bold">Correo: </span>
                         <span class="datos">[% persona.email %]</span></li>
                     </ul>                    
                     <div id="foto">
                     Imagen
                     </div>
-                    <button class="input_submit" type="button"> Editar </button>
                 </div>
     </form>
     
-    <table id="lista_grupos_persona">
-        <thead> 
-            <tr>
-                <th> Grupos </th> 
-            </tr>
-        </thead>
-        <tbody>
-
-        </tbody>
-    </table>
 </div>
