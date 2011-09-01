@@ -19,3 +19,26 @@ chown openldap.openldap /etc/ldap/ -R
 vim /etc/default/sladp agregar la ruta del conf nuevo
 
 invoke-rc.d slapd start
+
+#ssl
+
+crear ca:
+
+/usr/lib/ssl/misc/ca.pl -newca
+ 
+crear certificados:
+
+udo openssl req -x509 -nodes -newkey rsa:1024 -days 730 -out slapd.crt -keyout slapd.key
+
+editar /etc/ldap/slapd.conf agregar:
+
+#TLSCipherSuite HIGH:MEDIUM:+SSLv2
+TLSCACertificateFile  /etc/ldap/certs/cacert.pem
+TLSCertificateFile    /etc/ldap/certs/slapd.crt
+TLSCertificateKeyFile /etc/ldap/certs/slapd.key
+
+editar /etc/default/sldap y activar 
+
+SLAPD_SERVICES="ldap://127.0.0.1:389/ ldaps://127.0.0.1:636/"
+
+
